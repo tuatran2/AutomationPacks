@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>7b2763c8-bf79-4ece-83da-1945fb1c7886</Id>
+  <DisplayName>Reset Cloud Center User Password</DisplayName>
+  <CreatedTime>2016-08-18T20:26:08.7052871Z</CreatedTime>
+  <ModifiedTime>2016-08-18T20:26:08.695288Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>ba458a40-46d0-4843-897a-c470c70097fb</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>8ad98520-251a-4a67-9ee5-e5fe9cd3afe4</Id>
+        <DisplayName>Execute Cloud Center Command</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>cd54513b-5a2c-47ec-a50e-3a978c78c191</Id>
+            <ActivityNodeId>8ad98520-251a-4a67-9ee5-e5fe9cd3afe4</ActivityNodeId>
+            <CompletedId>2fd1f8bd-65d3-400a-8a36-1c44f358bd3f</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="CloudCenterExecuteCommandActivityConfiguration" xml:space="preserve">
+          <Id>8ad98520-251a-4a67-9ee5-e5fe9cd3afe4</Id>
+          <DisplayName>Execute Cloud Center Command</DisplayName>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>44d4cf0c-a148-4838-8a6d-46d55ab9b873</ContainingProcessId>
+          <Path>
+            <FormattedCode>v1/users/{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.User Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>688c1b82-95cd-4ddc-ad27-09a20c9bd6a2</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Path>
+          <Method>POST</Method>
+          <Request>
+            <FormattedCode>{{
+    "action": "ADMIN_RESET_PASSWORD"
+}}</FormattedCode>
+          </Request>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>922075be-88cf-4b67-99cb-82241f9c2da6</Id>
+        <DisplayName>Convert JSON to XML</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>ff455d19-4310-49bb-9889-f4aa55286950</Id>
+            <ActivityNodeId>922075be-88cf-4b67-99cb-82241f9c2da6</ActivityNodeId>
+            <CompletedId>252c6f81-318f-4bdd-9905-7ba9c3b75039</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="JsonToXmlActivityConfiguration" xml:space="preserve">
+          <Id>922075be-88cf-4b67-99cb-82241f9c2da6</Id>
+          <DisplayName>Convert JSON to XML</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>44d4cf0c-a148-4838-8a6d-46d55ab9b873</ContainingProcessId>
+          <SourceText>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Execute Cloud Center Command.HTTP Response Message Body</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Response</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>8ad98520-251a-4a67-9ee5-e5fe9cd3afe4</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </SourceText>
+          <RootElementName>
+            <HardcodedValue>root</HardcodedValue>
+          </RootElementName>
+          <ReplaceList />
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>19d446fe-c271-4fc9-a8da-854fa178db83</Id>
+        <DisplayName>XPath Query</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>df796042-af9d-4ca5-92c4-5c882b965b78</Id>
+            <ActivityNodeId>19d446fe-c271-4fc9-a8da-854fa178db83</ActivityNodeId>
+            <CompletedId>ed83597a-f85f-4a18-ae55-1c5ee592155b</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="XPathQueryActivityConfiguration" xml:space="preserve">
+          <Id>19d446fe-c271-4fc9-a8da-854fa178db83</Id>
+          <DisplayName>XPath Query</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>44d4cf0c-a148-4838-8a6d-46d55ab9b873</ContainingProcessId>
+          <SourceXml>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Convert JSON to XML.XML Output</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Output</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>922075be-88cf-4b67-99cb-82241f9c2da6</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </SourceXml>
+          <Namespaces />
+          <Queries>
+            <XPathQueryDefinition>
+              <DisplayName>New Password</DisplayName>
+              <Query>
+                <HardcodedValue>/root/newPassword</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+          </Queries>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>4fe69b52-ea7e-496e-a37e-f7a498331d88</Id>
+        <DisplayName>Set Variable</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>d0736fa9-262b-499b-92c1-96b9e2fdc3bb</Id>
+            <ActivityNodeId>4fe69b52-ea7e-496e-a37e-f7a498331d88</ActivityNodeId>
+            <CompletedId>fe902e54-532e-4ec5-8a53-ea9cb8666728</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+          <Id>4fe69b52-ea7e-496e-a37e-f7a498331d88</Id>
+          <DisplayName>Set Variable</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>44d4cf0c-a148-4838-8a6d-46d55ab9b873</ContainingProcessId>
+          <VariableToSet>
+            <DisplayPath>Process.Variables.Output.New Password</DisplayPath>
+            <LinkChain />
+            <ObjectId>36a119fe-08b4-437a-b660-3516aea35f50</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </VariableToSet>
+          <NewValue xsi:type="SubstitutableEncryptedString">
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.XPath Query.Results.New Password</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Results</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>New Password</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>19d446fe-c271-4fc9-a8da-854fa178db83</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </NewValue>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>44d4cf0c-a148-4838-8a6d-46d55ab9b873</ProcessId>
+</WorkflowConfiguration>

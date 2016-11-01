@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>d0bbc258-38a8-4fda-91aa-59576e302d58</Id>
+  <DisplayName>Delete Cloud Center User</DisplayName>
+  <CreatedTime>2016-08-18T20:26:09.0552801Z</CreatedTime>
+  <ModifiedTime>2016-08-18T20:26:09.0552808Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>9ed83d45-a92d-4f2d-a2a5-9ffaca83d0b2</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>8d073827-46e7-4704-858f-1d2146dd2c2a</Id>
+        <DisplayName>Execute Cloud Center Command</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>58625af6-42fd-4f99-8551-4de8e59dd0b5</Id>
+            <ActivityNodeId>8d073827-46e7-4704-858f-1d2146dd2c2a</ActivityNodeId>
+            <CompletedId>ca6f3b83-59ee-489a-919f-5f878232fc06</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="CloudCenterExecuteCommandActivityConfiguration" xml:space="preserve">
+          <Id>8d073827-46e7-4704-858f-1d2146dd2c2a</Id>
+          <DisplayName>Execute Cloud Center Command</DisplayName>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>6c8ede6d-bec5-4ab9-ad89-74495018f52e</ContainingProcessId>
+          <Path>
+            <FormattedCode>v1/users/{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.User Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>619592e7-0e8a-4c0c-b9c1-94279bd5c9a3</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Path>
+          <Method>DELETE</Method>
+          <Request>
+            <HardcodedValue />
+          </Request>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>6c8ede6d-bec5-4ab9-ad89-74495018f52e</ProcessId>
+</WorkflowConfiguration>

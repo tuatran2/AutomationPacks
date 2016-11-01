@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>4065db93-9224-495f-9135-6745f06eda7c</Id>
+  <DisplayName>Get Cloud Center Application Profiles</DisplayName>
+  <VersionNumber>-1</VersionNumber>
+  <CreatedTime>2016-08-18T20:26:08.6452883Z</CreatedTime>
+  <ModifiedTime>2016-08-19T15:15:15.9833102Z</ModifiedTime>
+  <TargetLoadBalancer xsi:type="RequireOverrideLoadBalancer" />
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>cb588401-2bd3-4084-9c57-0a7c3b67bef4</WorkflowId>
+  <CategoryIds>
+    <guid>07a318a6-033e-4b5a-8860-268259268bac</guid>
+  </CategoryIds>
+  <TriggerOwner>79bd7b55-0fa8-4e14-bd0c-c1bf8ab07e98</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="AdHocEventDefinition">
+        <Id>b3dc44b9-66fd-4c54-8348-e83451acb12d</Id>
+        <DisplayName>Started by User</DisplayName>
+        <Imported>true</Imported>
+        <Identities />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>a213edc9-df5a-48a4-83be-0a1a78b44658</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>3cff211e-1789-4d83-a1fc-78cc89820845</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="StartProcessEventDefinition">
+        <Id>23709c4e-c185-4e3b-9830-33ddcdc9773f</Id>
+        <DisplayName>Started by Parent Process</DisplayName>
+        <Imported>true</Imported>
+        <ProcessIds />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>d69faf82-dd9f-4693-9851-ae4ef17d5cf5</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>e158d056-84a6-42e9-ab62-2e46a36fbbd8</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions>
+    <VariableConfiguration xsi:type="TableVariableConfiguration" xml:space="preserve">
+      <Id>7a7e49c8-3825-4200-87f3-e9e35e51afee</Id>
+      <DisplayName>Application Profiles</DisplayName>
+      <ModifiedTime>2016-08-19T15:07:13.8697577Z</ModifiedTime>
+      <FixedSchemaDataTable>
+        <FixedSchema>
+          <Columns>
+            <TableSchemaColumn>
+              <Name>Id</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Name</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Description</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Version</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Executor</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Category</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Service Tier Id</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+          </Columns>
+        </FixedSchema>
+      </FixedSchemaDataTable>
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>4065db93-9224-495f-9135-6745f06eda7c</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>a94a314e-094f-475b-b323-0f0a9961e14c</Id>
+      <DisplayName>Application Profile Name</DisplayName>
+      <ModifiedTime>2016-08-16T19:47:00.5572221Z</ModifiedTime>
+      <string>*</string>
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>4065db93-9224-495f-9135-6745f06eda7c</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+  </VariableDefinitions>
+  <Notes />
+  <SmallImageReference xsi:type="ImageReferenceContained">
+    <FriendlyName>CliQr_16x16.bmp</FriendlyName>
+    <Bitmap>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALaSURBVDhPbZPJT1NRFMabuGDPH6GujBrjFFLFKQxKi+PChcZo3BjjEAfEilgUMG2EopKACtQIEaOlpVYBpwpW6ESrlMECLYLwGkFwQBDUn9dHija6+OXdm/O+756TfEcR+TTN3/RGxrG09GGo8aG95eTCbTelDwM8D0gx/0WJMbhW187GLDMrj5lQZtpIzGogMfuR+NaL+332Fdmxt8UayQZDY1NkljtQnjCxQfuEjfoW0gxeVEU+VJcFRa2kFXpI1TWTfP4x9xzhWIPCGj+rTppJzm9CZWhlv7EDo2OIhvYRrL735NtCbL7iQ33ZL+peUvMbcXQNzxi4giOsyTCRnNeIWryYea+b0PDk7AtRGtres002menoiNGH9HEKhbbKybqz9agKvewsbSMoff1HHKXCHhajeEkXnagL3bQEP6DYkfeQpLzncusXH4T+K4wSlMbZrHfIY6gMHm42DaBIOlMrz76pwI2xqf+/Qn/Hm9nznoJ6UvROUi55KavzokjJspCUaydV/5KSx70xwt90O6pw5cwlaMuR73t1FtbmvmS9zo2p/hmK3fo61msbxBh2Dpa5YsQvXB6cQjxwZSGjpYvprj3F60Ab2/V2lLkumt0uFMVWP6s1VmHyiHXZdVhdfbMG3kAX764n8vPmEqhcwviNxfSZDtDZGUBT/pS3gxKKbukzqnNWkbYHAhsbNDXctncyOPZNNpEiElN31VA+X2aiZB4hYzr9/W/luhwkqzOEUmRhtaZWRNbMisOVqM9Uc8xgQldaRU+Xj0nTVrgaD8XxTBniCRctIhRo+rMLdxqDJGdbUZ62oDxlJuH4HZYeqmLBgWpSMypp97cwencX33Vx/NDH8TU/jnDFlthl8vSOoBEbmKK1sey4iWUnaliRYWG5OB8tqGZo+BOD5iOMaecwdj2BiBgvxiDKwIdJEZovvOoZxOP30xMKMzQ6MVuXmiuIvPsduml+AfzZJ2GACS49AAAAAElFTkSuQmCC</Bitmap>
+  </SmallImageReference>
+  <LargeImageReference xsi:type="ImageReferenceContained">
+    <FriendlyName>CliQr32x32.png</FriendlyName>
+    <Bitmap>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</Bitmap>
+  </LargeImageReference>
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.CloudCenter.Targets.CloudCenterServerTargetConfiguration, Tidal.Automation.CloudCenter.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>ec87bcc8-7db9-9aa7-3bdc-462325ff1762</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.WebService.Common.ClientCertificateUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.CloudCenter.Users.CloudCenterApiAccessCredentialsConfiguration, Tidal.Automation.CloudCenter.Common</string>
+    <string>Tidal.Automation.WebService.Common.OAuthUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.OpenStack.Common.User.OpenStackUserConfiguration, Tidal.Automation.OpenStack.Common</string>
+    <string>Tidal.Automation.Ssh.Common.PublicKeyAdminUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.Ssh.Common.IOSUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.BuiltinAdapter.Common.GenericRuntimeUserConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+    <string>Tidal.Automation.Azure.Common.AzureAccessKeyConfiguration, Tidal.Automation.Azure.Common</string>
+    <string>Tidal.Automation.Snmp.Common.SnmpUserConfiguration, Tidal.Automation.Snmp.Common</string>
+    <string>Tidal.Automation.vCloud.Common.Users.vCloudUserConfiguration, Tidal.Automation.vCloud.Common</string>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+</ProcessConfiguration>

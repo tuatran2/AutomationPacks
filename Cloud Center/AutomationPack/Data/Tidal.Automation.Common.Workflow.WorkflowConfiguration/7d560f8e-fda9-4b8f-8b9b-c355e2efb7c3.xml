@@ -1,0 +1,1059 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>7d560f8e-fda9-4b8f-8b9b-c355e2efb7c3</Id>
+  <DisplayName>Get Cloud Center Cloud Details</DisplayName>
+  <VersionNumber>2</VersionNumber>
+  <CreatedTime>2016-08-18T20:26:09.445273Z</CreatedTime>
+  <ModifiedTime>2016-08-18T21:49:45.9900562Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>746ee774-165c-404e-9b5b-18a67c6313be</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>004d54c8-b98d-479e-987f-8a2668e99f83</Id>
+        <DisplayName>Get User Details</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>98aec384-68c1-47da-b237-c28d924ada98</Id>
+            <ActivityNodeId>004d54c8-b98d-479e-987f-8a2668e99f83</ActivityNodeId>
+            <CompletedId>360c1a7c-abcf-4e3f-8cf6-fada814cad77</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="CloudCenterExecuteCommandActivityConfiguration" xml:space="preserve">
+          <Id>004d54c8-b98d-479e-987f-8a2668e99f83</Id>
+          <DisplayName>Get User Details</DisplayName>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>9622346a-45a9-4b09-baf6-a053faab5659</ContainingProcessId>
+          <Path>
+            <FormattedCode>v1/tenants/{0}/clouds/{1}?detail=true</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Tenant Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>0623e157-dabd-46dd-9ad3-6dcc86d05986</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Cloud Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>1d060eb9-a3bb-4359-9f80-b92cefd7b008</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Path>
+          <Method>GET</Method>
+          <Request>
+            <HardcodedValue />
+          </Request>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>f9176d81-c911-4761-89f8-e6ca99c5e577</Id>
+        <DisplayName>Convert JSON to XML</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>4a0c0427-efaa-4730-8e6b-6e6c6101b4c3</Id>
+            <ActivityNodeId>f9176d81-c911-4761-89f8-e6ca99c5e577</ActivityNodeId>
+            <CompletedId>ea26c2a2-563a-4fe0-8f1c-a573549e562f</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="JsonToXmlActivityConfiguration" xml:space="preserve">
+          <Id>f9176d81-c911-4761-89f8-e6ca99c5e577</Id>
+          <DisplayName>Convert JSON to XML</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>9622346a-45a9-4b09-baf6-a053faab5659</ContainingProcessId>
+          <SourceText>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Get User Details.HTTP Response Message Body</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Response</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>004d54c8-b98d-479e-987f-8a2668e99f83</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </SourceText>
+          <RootElementName>
+            <HardcodedValue>root</HardcodedValue>
+          </RootElementName>
+          <ReplaceList />
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>35b6400a-39d5-4b0a-98e6-d7c0810ad03b</Id>
+        <DisplayName>XPath Query Cloud Information</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>15d88d2d-d18f-420e-98ca-0951bedc0095</Id>
+            <ActivityNodeId>35b6400a-39d5-4b0a-98e6-d7c0810ad03b</ActivityNodeId>
+            <CompletedId>a2782d99-e8f5-436c-bb28-2a8f4b2f729b</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="XPathQueryActivityConfiguration" xml:space="preserve">
+          <Id>35b6400a-39d5-4b0a-98e6-d7c0810ad03b</Id>
+          <DisplayName>XPath Query Cloud Information</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>9622346a-45a9-4b09-baf6-a053faab5659</ContainingProcessId>
+          <SourceXml>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Convert JSON to XML.XML Output</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Output</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>f9176d81-c911-4761-89f8-e6ca99c5e577</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </SourceXml>
+          <Namespaces />
+          <Queries>
+            <XPathQueryDefinition>
+              <DisplayName>Name</DisplayName>
+              <Query>
+                <HardcodedValue>/root/name</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>Cloud Family</DisplayName>
+              <Query>
+                <HardcodedValue>/root/cloudFamily</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>Description</DisplayName>
+              <Query>
+                <HardcodedValue>/root/description</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultValue xsi:type="SubstitutableString">
+                <HardcodedValue />
+              </DefaultValue>
+              <DefaultBehavior>UseDefaults</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>Public Cloud</DisplayName>
+              <Query>
+                <HardcodedValue>/root/publicCloud</HardcodedValue>
+              </Query>
+              <ReturnType>Boolean</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>Status</DisplayName>
+              <Query>
+                <HardcodedValue>/root/detail/status</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+          </Queries>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>e550c454-e313-473a-addd-1636fdde5f88</Id>
+        <DisplayName>Set Multiple Variables</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>a2fd6725-f7a6-403e-b07b-c453fade3920</Id>
+            <ActivityNodeId>e550c454-e313-473a-addd-1636fdde5f88</ActivityNodeId>
+            <CompletedId>bf5ef74f-5362-4896-80fb-75c2a14dc39c</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SetMultipleVariableActivityConfiguration" xml:space="preserve">
+          <Id>e550c454-e313-473a-addd-1636fdde5f88</Id>
+          <DisplayName>Set Multiple Variables</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>9622346a-45a9-4b09-baf6-a053faab5659</ContainingProcessId>
+          <Assignments>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Name</DisplayPath>
+                <LinkChain />
+                <ObjectId>98369881-d395-4290-b52b-c8e43047d50a</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Name</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Name</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>35b6400a-39d5-4b0a-98e6-d7c0810ad03b</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Cloud Family</DisplayPath>
+                <LinkChain />
+                <ObjectId>bb810bf4-2030-48b2-9e31-0d4aa1eaa80b</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Cloud Family</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Cloud Family</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>35b6400a-39d5-4b0a-98e6-d7c0810ad03b</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Description</DisplayPath>
+                <LinkChain />
+                <ObjectId>7226e850-2e8f-4767-96f7-70e45a7b3f13</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Description</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Description</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>35b6400a-39d5-4b0a-98e6-d7c0810ad03b</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Public Cloud</DisplayPath>
+                <LinkChain />
+                <ObjectId>30644562-8a4f-41ae-962d-33e5c2b28ccf</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableBoolean">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Public Cloud</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Public Cloud</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>35b6400a-39d5-4b0a-98e6-d7c0810ad03b</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Status</DisplayPath>
+                <LinkChain />
+                <ObjectId>3a4a5070-6b07-4ccf-a8ce-34a35659ffd6</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Status</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Status</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>35b6400a-39d5-4b0a-98e6-d7c0810ad03b</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+          </Assignments>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ParallelNode">
+        <Id>3ffae362-25d8-4165-8f9f-dbbda9283492</Id>
+        <DisplayName>Parallel Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>97758e55-c2c8-4828-9b90-e018337ff8d0</Id>
+            <DisplayName>Cloud Account Information</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>5c34a26a-03f9-422e-90dd-70d8289d58af</Id>
+                <DisplayName>Replace String</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                    <Id>97bfbdfe-7a4b-453c-b6d5-ad2027de4257</Id>
+                    <ActivityNodeId>5c34a26a-03f9-422e-90dd-70d8289d58af</ActivityNodeId>
+                    <CompletedId>c02b02ef-c29a-43e2-9c3c-807a15914353</CompletedId>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="ReplaceStringActivityConfiguration" xml:space="preserve">
+                  <Id>5c34a26a-03f9-422e-90dd-70d8289d58af</Id>
+                  <DisplayName>Replace String</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>9622346a-45a9-4b09-baf6-a053faab5659</ContainingProcessId>
+                  <InputString>
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.Convert JSON to XML.XML Output</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>Output</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>f9176d81-c911-4761-89f8-e6ca99c5e577</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </InputString>
+                  <ReplaceList>
+                    <SubstitutableRepaceItem>
+                      <ReplacedString>
+                        <HardcodedValue>&lt;perms&gt;read&lt;/perms&gt;</HardcodedValue>
+                      </ReplacedString>
+                      <ReplacementString>
+                        <HardcodedValue>&lt;readPermission&gt;true&lt;/readPermission&gt;</HardcodedValue>
+                      </ReplacementString>
+                    </SubstitutableRepaceItem>
+                    <SubstitutableRepaceItem>
+                      <ReplacedString>
+                        <HardcodedValue>&lt;perms&gt;write&lt;/perms&gt;</HardcodedValue>
+                      </ReplacedString>
+                      <ReplacementString>
+                        <HardcodedValue>&lt;writePermission&gt;true&lt;/writePermission&gt;</HardcodedValue>
+                      </ReplacementString>
+                    </SubstitutableRepaceItem>
+                    <SubstitutableRepaceItem>
+                      <ReplacedString>
+                        <HardcodedValue>&lt;perms&gt;delete&lt;/perms&gt;</HardcodedValue>
+                      </ReplacedString>
+                      <ReplacementString>
+                        <HardcodedValue>&lt;deletePermission&gt;true&lt;/deletePermission&gt;</HardcodedValue>
+                      </ReplacementString>
+                    </SubstitutableRepaceItem>
+                    <SubstitutableRepaceItem>
+                      <ReplacedString>
+                        <HardcodedValue>&lt;perms&gt;administration&lt;/perms&gt;</HardcodedValue>
+                      </ReplacedString>
+                      <ReplacementString>
+                        <HardcodedValue>&lt;adminPermission&gt;true&lt;/adminPermission&gt;</HardcodedValue>
+                      </ReplacementString>
+                    </SubstitutableRepaceItem>
+                  </ReplaceList>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>53503cf6-2c13-447c-9e0d-b69882eb0b7a</Id>
+                <DisplayName>Read Cloud Account from XML</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                    <Id>5b65be71-dadc-46d3-a7ef-b9ca5b3f3805</Id>
+                    <ActivityNodeId>53503cf6-2c13-447c-9e0d-b69882eb0b7a</ActivityNodeId>
+                    <CompletedId>115ef735-d2e0-4d48-b1cf-6c8004b4777b</CompletedId>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="ReadTableFromXmlActivityConfiguration" xml:space="preserve">
+                  <Id>53503cf6-2c13-447c-9e0d-b69882eb0b7a</Id>
+                  <DisplayName>Read Cloud Account from XML</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>9622346a-45a9-4b09-baf6-a053faab5659</ContainingProcessId>
+                  <Columns>
+                    <BuiltinTableColumn>
+                      <Name>id</Name>
+                      <DataType>System.String</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>userId</Name>
+                      <DataType>System.String</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>displayName</Name>
+                      <DataType>System.String</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>readPermission</Name>
+                      <DataType>System.Boolean</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>writePermission</Name>
+                      <DataType>System.Boolean</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>deletePermission</Name>
+                      <DataType>System.Boolean</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>adminPermission</Name>
+                      <DataType>System.Boolean</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>manageCost</Name>
+                      <DataType>System.Boolean</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>publicVisible</Name>
+                      <DataType>System.Boolean</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>accessPermission</Name>
+                      <DataType>System.String</DataType>
+                    </BuiltinTableColumn>
+                  </Columns>
+                  <XmlRowElementName>
+                    <HardcodedValue>cloudAccounts</HardcodedValue>
+                  </XmlRowElementName>
+                  <XmlString>
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.Replace String.Replaced Result</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>Result</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>5c34a26a-03f9-422e-90dd-70d8289d58af</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </XmlString>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ForEachNode">
+                <Id>24f3e9a3-5935-44de-a892-483b22032ae4</Id>
+                <DisplayName>For Each Cloud Account</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>058c5518-a81c-46d3-a034-499e998cb6e5</Id>
+                    <DisplayName>Add Row to Table</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>7837f0b8-6368-43cf-9a15-5941d78017dc</Id>
+                        <ActivityNodeId>058c5518-a81c-46d3-a034-499e998cb6e5</ActivityNodeId>
+                        <CompletedId>cc3ec1a5-0c07-4024-9f4e-2f0e76d32f00</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                      <Id>058c5518-a81c-46d3-a034-499e998cb6e5</Id>
+                      <DisplayName>Add Row to Table</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>9622346a-45a9-4b09-baf6-a053faab5659</ContainingProcessId>
+                      <TableVariable>
+                        <DisplayPath>Process.Variables.Output.Cloud Accounts</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>88c02633-bf02-46e0-aa56-223f9ef00363</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </TableVariable>
+                      <Values>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Manage Cost</ColumnName>
+                          <Value xsi:type="SubstitutableBoolean">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Account.Item.manageCost</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>manageCost</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>24f3e9a3-5935-44de-a892-483b22032ae4</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Public Visible</ColumnName>
+                          <Value xsi:type="SubstitutableBoolean">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Account.Item.publicVisible</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>publicVisible</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>24f3e9a3-5935-44de-a892-483b22032ae4</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Access Permission</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Account.Item.accessPermission</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>accessPermission</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>24f3e9a3-5935-44de-a892-483b22032ae4</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Administration Permission</ColumnName>
+                          <Value xsi:type="SubstitutableBoolean">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Account.Item.adminPermission</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>adminPermission</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>24f3e9a3-5935-44de-a892-483b22032ae4</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Delete Permission</ColumnName>
+                          <Value xsi:type="SubstitutableBoolean">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Account.Item.deletePermission</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>deletePermission</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>24f3e9a3-5935-44de-a892-483b22032ae4</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Write Permission</ColumnName>
+                          <Value xsi:type="SubstitutableBoolean">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Account.Item.writePermission</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>writePermission</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>24f3e9a3-5935-44de-a892-483b22032ae4</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Read Permission</ColumnName>
+                          <Value xsi:type="SubstitutableBoolean">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Account.Item.readPermission</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>readPermission</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>24f3e9a3-5935-44de-a892-483b22032ae4</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>User Name</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Account.Item.displayName</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>displayName</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>24f3e9a3-5935-44de-a892-483b22032ae4</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>User Id</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Account.Item.userId</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>userId</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>24f3e9a3-5935-44de-a892-483b22032ae4</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Id</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Account.Item.id</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>id</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>24f3e9a3-5935-44de-a892-483b22032ae4</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                      </Values>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <ForEachSource xsi:type="PropertyReference">
+                  <DisplayPath>Workflow.Read Cloud Account from XML.Result Table.Rows</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>ResultTable</PropertyName>
+                    </Link>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>TIARows</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>53503cf6-2c13-447c-9e0d-b69882eb0b7a</ObjectId>
+                  <ObjectType>ActivityInstance</ObjectType>
+                </ForEachSource>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>55fabbc8-b7ea-4d91-82b5-bbde897f15d7</Id>
+            <DisplayName>Cloud Region Information</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>99473785-79fd-48b6-b606-c3952894ffec</Id>
+                <DisplayName>Read Cloud Region from XML</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                    <Id>2b5a5c8a-cb35-41e9-bb23-2ce9c2aca918</Id>
+                    <ActivityNodeId>99473785-79fd-48b6-b606-c3952894ffec</ActivityNodeId>
+                    <CompletedId>52bf6be0-1afa-46ac-92af-f5d542617f51</CompletedId>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="ReadTableFromXmlActivityConfiguration" xml:space="preserve">
+                  <Id>99473785-79fd-48b6-b606-c3952894ffec</Id>
+                  <DisplayName>Read Cloud Region from XML</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>9622346a-45a9-4b09-baf6-a053faab5659</ContainingProcessId>
+                  <Columns>
+                    <BuiltinTableColumn>
+                      <Name>displayName</Name>
+                      <DataType>System.String</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>regionName</Name>
+                      <DataType>System.String</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>enabled</Name>
+                      <DataType>System.Boolean</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>activated</Name>
+                      <DataType>System.Boolean</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>numUsers</Name>
+                      <DataType>System.Int32</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>status</Name>
+                      <DataType>System.String</DataType>
+                    </BuiltinTableColumn>
+                    <BuiltinTableColumn>
+                      <Name>gateway</Name>
+                      <DataType>System.String</DataType>
+                    </BuiltinTableColumn>
+                  </Columns>
+                  <XmlRowElementName>
+                    <HardcodedValue>cloudRegions</HardcodedValue>
+                  </XmlRowElementName>
+                  <XmlString>
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.Convert JSON to XML.XML Output</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>Output</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>f9176d81-c911-4761-89f8-e6ca99c5e577</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </XmlString>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ForEachNode">
+                <Id>6272beb7-d2b2-453c-b9bf-4733e4a6f15d</Id>
+                <DisplayName>For Each Cloud Region</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>ca327b64-0a98-4fdc-93ba-cd5e5f8c259d</Id>
+                    <DisplayName>XPath Query Gateway Information</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>e169ca73-2c14-4f39-8ca2-eeae6e5ed55e</Id>
+                        <ActivityNodeId>ca327b64-0a98-4fdc-93ba-cd5e5f8c259d</ActivityNodeId>
+                        <CompletedId>8b0df626-b32f-4d1c-8470-36ddff6c7438</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="XPathQueryActivityConfiguration" xml:space="preserve">
+                      <Id>ca327b64-0a98-4fdc-93ba-cd5e5f8c259d</Id>
+                      <DisplayName>XPath Query Gateway Information</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>9622346a-45a9-4b09-baf6-a053faab5659</ContainingProcessId>
+                      <SourceXml>
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Cloud Region.Item.gateway</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>gateway</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>6272beb7-d2b2-453c-b9bf-4733e4a6f15d</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </SourceXml>
+                      <Namespaces />
+                      <Queries>
+                        <XPathQueryDefinition>
+                          <DisplayName>Address</DisplayName>
+                          <Query>
+                            <HardcodedValue>/gateway/address</HardcodedValue>
+                          </Query>
+                          <ReturnType>String</ReturnType>
+                          <DefaultBehavior>Fail</DefaultBehavior>
+                        </XPathQueryDefinition>
+                        <XPathQueryDefinition>
+                          <DisplayName>DNS Name</DisplayName>
+                          <Query>
+                            <HardcodedValue>/gateway/dnsName</HardcodedValue>
+                          </Query>
+                          <ReturnType>String</ReturnType>
+                          <DefaultValue xsi:type="SubstitutableString">
+                            <HardcodedValue />
+                          </DefaultValue>
+                          <DefaultBehavior>UseDefaults</DefaultBehavior>
+                        </XPathQueryDefinition>
+                      </Queries>
+                    </Configuration>
+                  </ActivityNode>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>68c78d96-a662-491b-9ac7-2972df42b5fa</Id>
+                    <DisplayName>Add Row to Table</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>46f1b5d8-dfa6-401f-be9a-f43eaa5aa4e4</Id>
+                        <ActivityNodeId>68c78d96-a662-491b-9ac7-2972df42b5fa</ActivityNodeId>
+                        <CompletedId>fe2fa91c-9c47-42db-b1b5-d731ff313445</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                      <Id>68c78d96-a662-491b-9ac7-2972df42b5fa</Id>
+                      <DisplayName>Add Row to Table</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>9622346a-45a9-4b09-baf6-a053faab5659</ContainingProcessId>
+                      <TableVariable>
+                        <DisplayPath>Process.Variables.Output.Cloud Region</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>17e3d9dd-e57e-4143-a8a7-3f77de3a2027</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </TableVariable>
+                      <Values>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Activated</ColumnName>
+                          <Value xsi:type="SubstitutableBoolean">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Region.Item.activated</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>activated</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>6272beb7-d2b2-453c-b9bf-4733e4a6f15d</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Display Name</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Region.Item.displayName</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>displayName</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>6272beb7-d2b2-453c-b9bf-4733e4a6f15d</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>DNS Name</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.XPath Query Gateway Information.Results.DNS Name</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>Results</PropertyName>
+                                  </Link>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>DNS Name</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>ca327b64-0a98-4fdc-93ba-cd5e5f8c259d</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Enabled</ColumnName>
+                          <Value xsi:type="SubstitutableBoolean">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Region.Item.enabled</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>enabled</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>6272beb7-d2b2-453c-b9bf-4733e4a6f15d</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Gateway Address</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.XPath Query Gateway Information.Results.Address</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>Results</PropertyName>
+                                  </Link>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>Address</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>ca327b64-0a98-4fdc-93ba-cd5e5f8c259d</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Number of Users</ColumnName>
+                          <Value xsi:type="SubstitutableNumber">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Region.Item.numUsers</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>numUsers</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>6272beb7-d2b2-453c-b9bf-4733e4a6f15d</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Region Name</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Region.Item.regionName</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>regionName</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>6272beb7-d2b2-453c-b9bf-4733e4a6f15d</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Status</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Cloud Region.Item.status</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>status</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>6272beb7-d2b2-453c-b9bf-4733e4a6f15d</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                      </Values>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <ForEachSource xsi:type="PropertyReference">
+                  <DisplayPath>Workflow.Read Cloud Region from XML.Result Table.Rows</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>ResultTable</PropertyName>
+                    </Link>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>TIARows</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>99473785-79fd-48b6-b606-c3952894ffec</ObjectId>
+                  <ObjectType>ActivityInstance</ObjectType>
+                </ForEachSource>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>9622346a-45a9-4b09-baf6-a053faab5659</ProcessId>
+</WorkflowConfiguration>

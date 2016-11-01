@@ -1,0 +1,361 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>cb588401-2bd3-4084-9c57-0a7c3b67bef4</Id>
+  <DisplayName>Get Cloud Center Application Profiles</DisplayName>
+  <VersionNumber>4</VersionNumber>
+  <CreatedTime>2016-08-18T20:26:08.6252887Z</CreatedTime>
+  <ModifiedTime>2016-08-19T15:15:16.1133102Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>e179d741-37b4-4032-b8c9-6776d326832e</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>efc153f0-3b93-461e-9bf1-a2ccdfc80547</Id>
+        <DisplayName>Execute Cloud Center Command</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>51c8c1ea-c546-4133-96f2-3377d5bc04b9</Id>
+            <ActivityNodeId>efc153f0-3b93-461e-9bf1-a2ccdfc80547</ActivityNodeId>
+            <CompletedId>ec0f22f1-0ca0-4a3a-87f0-5c7bd2ad2888</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="CloudCenterExecuteCommandActivityConfiguration" xml:space="preserve">
+          <Id>efc153f0-3b93-461e-9bf1-a2ccdfc80547</Id>
+          <DisplayName>Execute Cloud Center Command</DisplayName>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>4065db93-9224-495f-9135-6745f06eda7c</ContainingProcessId>
+          <Path>
+            <HardcodedValue>/v1/apps</HardcodedValue>
+          </Path>
+          <Method>GET</Method>
+          <Request>
+            <HardcodedValue />
+          </Request>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>10214ef7-dc95-454e-9e0a-285219f9290e</Id>
+        <DisplayName>Convert JSON to XML</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>0be5548a-c5c2-44ee-b315-9a3f3370a3de</Id>
+            <ActivityNodeId>10214ef7-dc95-454e-9e0a-285219f9290e</ActivityNodeId>
+            <CompletedId>07884209-5d9d-448d-a4f9-86835356576d</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="JsonToXmlActivityConfiguration" xml:space="preserve">
+          <Id>10214ef7-dc95-454e-9e0a-285219f9290e</Id>
+          <DisplayName>Convert JSON to XML</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>4065db93-9224-495f-9135-6745f06eda7c</ContainingProcessId>
+          <SourceText>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Execute Cloud Center Command.HTTP Response Message Body</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Response</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>efc153f0-3b93-461e-9bf1-a2ccdfc80547</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </SourceText>
+          <RootElementName>
+            <HardcodedValue>root</HardcodedValue>
+          </RootElementName>
+          <ReplaceList />
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>b66df1de-2116-43e7-a439-4c22cc06d9c0</Id>
+        <DisplayName>Read Application Profile Information</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>4aca3e99-c639-4776-8513-2ee01ff98e51</Id>
+            <ActivityNodeId>b66df1de-2116-43e7-a439-4c22cc06d9c0</ActivityNodeId>
+            <CompletedId>93110926-59bb-4531-ba74-870e4c676ea1</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="ReadTableFromXmlActivityConfiguration" xml:space="preserve">
+          <Id>b66df1de-2116-43e7-a439-4c22cc06d9c0</Id>
+          <DisplayName>Read Application Profile Information</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>4065db93-9224-495f-9135-6745f06eda7c</ContainingProcessId>
+          <Columns>
+            <BuiltinTableColumn>
+              <Name>id</Name>
+              <DataType>System.String</DataType>
+            </BuiltinTableColumn>
+            <BuiltinTableColumn>
+              <Name>name</Name>
+              <DataType>System.String</DataType>
+            </BuiltinTableColumn>
+            <BuiltinTableColumn>
+              <Name>description</Name>
+              <DataType>System.String</DataType>
+            </BuiltinTableColumn>
+            <BuiltinTableColumn>
+              <Name>version</Name>
+              <DataType>System.String</DataType>
+            </BuiltinTableColumn>
+            <BuiltinTableColumn>
+              <Name>serviceTierId</Name>
+              <DataType>System.String</DataType>
+            </BuiltinTableColumn>
+            <BuiltinTableColumn>
+              <Name>executor</Name>
+              <DataType>System.String</DataType>
+            </BuiltinTableColumn>
+            <BuiltinTableColumn>
+              <Name>category</Name>
+              <DataType>System.String</DataType>
+            </BuiltinTableColumn>
+          </Columns>
+          <XmlRowElementName>
+            <HardcodedValue>apps</HardcodedValue>
+          </XmlRowElementName>
+          <XmlString>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Convert JSON to XML.XML Output</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Output</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>10214ef7-dc95-454e-9e0a-285219f9290e</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </XmlString>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ForEachNode">
+        <Id>1cef9510-d376-4d2a-bed0-eed4ff92c184</Id>
+        <DisplayName>For Each Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>8268937e-b42c-4c0f-88e9-8c71ef14a391</Id>
+            <DisplayName>Condition Branch</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>e34299e3-6c72-4bce-845d-24c150641a5d</Id>
+                <DisplayName>Add Row to Table</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                    <Id>c9cda47e-2f45-4d02-9acf-f680eec0642b</Id>
+                    <ActivityNodeId>e34299e3-6c72-4bce-845d-24c150641a5d</ActivityNodeId>
+                    <CompletedId>688bb92d-a548-4903-9165-8cb5429cf7db</CompletedId>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                  <Id>e34299e3-6c72-4bce-845d-24c150641a5d</Id>
+                  <DisplayName>Add Row to Table</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>4065db93-9224-495f-9135-6745f06eda7c</ContainingProcessId>
+                  <TableVariable>
+                    <DisplayPath>Process.Variables.Output.Application Profiles</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>7a7e49c8-3825-4200-87f3-e9e35e51afee</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </TableVariable>
+                  <Values>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Category</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Block.Item.category</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>category</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>1cef9510-d376-4d2a-bed0-eed4ff92c184</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Description</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Block.Item.description</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>description</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>1cef9510-d376-4d2a-bed0-eed4ff92c184</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Executor</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Block.Item.executor</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>executor</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>1cef9510-d376-4d2a-bed0-eed4ff92c184</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Id</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Block.Item.id</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>id</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>1cef9510-d376-4d2a-bed0-eed4ff92c184</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Block.Item.name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>1cef9510-d376-4d2a-bed0-eed4ff92c184</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Service Tier Id</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Block.Item.serviceTierId</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>serviceTierId</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>1cef9510-d376-4d2a-bed0-eed4ff92c184</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Version</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Block.Item.version</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>version</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>1cef9510-d376-4d2a-bed0-eed4ff92c184</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                  </Values>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>06dd85c8-ba7d-4b8a-8311-3d9d1fd2689b</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>3498b8df-938d-44e6-b8e4-82fdd157680f</Id>
+                  <Expression xsi:type="SubstitutableWildcard">
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Input.Tenant Name</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>a94a314e-094f-475b-b323-0f0a9961e14c</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </Expression>
+                  <Comparison>Wildcard</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.For Each Block.Item.name</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>name</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>1cef9510-d376-4d2a-bed0-eed4ff92c184</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+        </Children>
+        <ForEachSource xsi:type="PropertyReference">
+          <DisplayPath>Workflow.Read Application Profile Information.Result Table.Rows</DisplayPath>
+          <LinkChain>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>ResultTable</PropertyName>
+            </Link>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>TIARows</PropertyName>
+            </Link>
+          </LinkChain>
+          <ObjectId>b66df1de-2116-43e7-a439-4c22cc06d9c0</ObjectId>
+          <ObjectType>ActivityInstance</ObjectType>
+        </ForEachSource>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>4065db93-9224-495f-9135-6745f06eda7c</ProcessId>
+</WorkflowConfiguration>

@@ -1,0 +1,763 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>fda3d18f-8144-4657-aa61-5eeffcc525d0</Id>
+  <DisplayName>Get Cloud Center Cloud Account Details</DisplayName>
+  <CreatedTime>2016-08-18T20:26:08.8152849Z</CreatedTime>
+  <ModifiedTime>2016-08-18T20:26:08.8052858Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>4ccb685f-4787-4aed-b3ed-7a0fef2bca4f</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>57f8f060-5622-49ce-b4d0-63d21d807510</Id>
+        <DisplayName>Execute Cloud Center Command</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>c8e97eef-853b-40e7-b062-19fdb2f690c7</Id>
+            <ActivityNodeId>57f8f060-5622-49ce-b4d0-63d21d807510</ActivityNodeId>
+            <CompletedId>60919bce-7c84-41aa-b0b9-99f304799ff6</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="CloudCenterExecuteCommandActivityConfiguration" xml:space="preserve">
+          <Id>57f8f060-5622-49ce-b4d0-63d21d807510</Id>
+          <DisplayName>Execute Cloud Center Command</DisplayName>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ContainingProcessId>
+          <Path>
+            <FormattedCode>v1/tenants/{0}/clouds/{1}/accounts/{2}
+</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Tenant Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>45eb88e4-caca-4502-9403-c64a51a48529</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Cloud Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>7a8e4440-e44c-4785-8a76-5efef6c4711e</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Cloud Account Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>b1f0adcd-a831-4629-88c4-253554014296</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Path>
+          <Method>GET</Method>
+          <Request>
+            <HardcodedValue />
+          </Request>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>0e540d88-a362-4259-9987-3915156ce1b5</Id>
+        <DisplayName>Convert JSON to XML</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>a41a3f0f-5965-4adc-a990-fa4e78a71b43</Id>
+            <ActivityNodeId>0e540d88-a362-4259-9987-3915156ce1b5</ActivityNodeId>
+            <CompletedId>8ba9ad39-b97d-4ba8-95d0-39f109d94cad</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="JsonToXmlActivityConfiguration" xml:space="preserve">
+          <Id>0e540d88-a362-4259-9987-3915156ce1b5</Id>
+          <DisplayName>Convert JSON to XML</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ContainingProcessId>
+          <SourceText>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Execute Cloud Center Command.HTTP Response Message Body</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Response</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>57f8f060-5622-49ce-b4d0-63d21d807510</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </SourceText>
+          <RootElementName>
+            <HardcodedValue>root</HardcodedValue>
+          </RootElementName>
+          <ReplaceList />
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>e3539643-9025-42fb-a547-1e0f2f07bc5c</Id>
+        <DisplayName>Replace String</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>583c6890-a943-46f9-8e9f-355d29c7d1ed</Id>
+            <ActivityNodeId>e3539643-9025-42fb-a547-1e0f2f07bc5c</ActivityNodeId>
+            <CompletedId>d1739cdc-e463-4105-a2ca-bc8d0d470489</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="ReplaceStringActivityConfiguration" xml:space="preserve">
+          <Id>e3539643-9025-42fb-a547-1e0f2f07bc5c</Id>
+          <DisplayName>Replace String</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ContainingProcessId>
+          <InputString>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Convert JSON to XML.XML Output</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Output</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>0e540d88-a362-4259-9987-3915156ce1b5</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </InputString>
+          <ReplaceList>
+            <SubstitutableRepaceItem>
+              <ReplacedString>
+                <HardcodedValue>&lt;perms&gt;read&lt;/perms&gt;</HardcodedValue>
+              </ReplacedString>
+              <ReplacementString>
+                <HardcodedValue>&lt;readPermission&gt;true&lt;/readPermission&gt;</HardcodedValue>
+              </ReplacementString>
+            </SubstitutableRepaceItem>
+            <SubstitutableRepaceItem>
+              <ReplacedString>
+                <HardcodedValue>&lt;perms&gt;write&lt;/perms&gt;</HardcodedValue>
+              </ReplacedString>
+              <ReplacementString>
+                <HardcodedValue>&lt;writePermission&gt;true&lt;/writePermission&gt;</HardcodedValue>
+              </ReplacementString>
+            </SubstitutableRepaceItem>
+            <SubstitutableRepaceItem>
+              <ReplacedString>
+                <HardcodedValue>&lt;perms&gt;delete&lt;/perms&gt;</HardcodedValue>
+              </ReplacedString>
+              <ReplacementString>
+                <HardcodedValue>&lt;deletePermission&gt;true&lt;/deletePermission&gt;</HardcodedValue>
+              </ReplacementString>
+            </SubstitutableRepaceItem>
+            <SubstitutableRepaceItem>
+              <ReplacedString>
+                <HardcodedValue>&lt;perms&gt;administration&lt;/perms&gt;</HardcodedValue>
+              </ReplacedString>
+              <ReplacementString>
+                <HardcodedValue>&lt;adminPermission&gt;true&lt;/adminPermission&gt;</HardcodedValue>
+              </ReplacementString>
+            </SubstitutableRepaceItem>
+          </ReplaceList>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>c904ad6f-0cfe-4fa6-9c75-dbb5e4ca3b32</Id>
+        <DisplayName>XPath Query</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>35dcf19a-6da7-4bd1-b26a-0261428698b6</Id>
+            <ActivityNodeId>c904ad6f-0cfe-4fa6-9c75-dbb5e4ca3b32</ActivityNodeId>
+            <CompletedId>fede53cd-0c7c-4d14-9160-3affc70aa663</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="XPathQueryActivityConfiguration" xml:space="preserve">
+          <Id>c904ad6f-0cfe-4fa6-9c75-dbb5e4ca3b32</Id>
+          <DisplayName>XPath Query</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ContainingProcessId>
+          <SourceXml>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Replace String.Replaced Result</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Result</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>e3539643-9025-42fb-a547-1e0f2f07bc5c</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </SourceXml>
+          <Namespaces />
+          <Queries>
+            <XPathQueryDefinition>
+              <DisplayName>Read Permission</DisplayName>
+              <Query>
+                <HardcodedValue>/root/readPermission</HardcodedValue>
+              </Query>
+              <ReturnType>Boolean</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>Write Permission</DisplayName>
+              <Query>
+                <HardcodedValue>/root/writePermission</HardcodedValue>
+              </Query>
+              <ReturnType>Boolean</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>Delete Permission</DisplayName>
+              <Query>
+                <HardcodedValue>/root/deletePermission</HardcodedValue>
+              </Query>
+              <ReturnType>Boolean</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>Admin Permission</DisplayName>
+              <Query>
+                <HardcodedValue>/root/adminPermission</HardcodedValue>
+              </Query>
+              <ReturnType>Boolean</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>Account Display Name</DisplayName>
+              <Query>
+                <HardcodedValue>/root/displayName</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>User Id</DisplayName>
+              <Query>
+                <HardcodedValue>/root/userId</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>Account Description</DisplayName>
+              <Query>
+                <HardcodedValue>/root/accountDescription</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>Manage Cost</DisplayName>
+              <Query>
+                <HardcodedValue>/root/manageCost</HardcodedValue>
+              </Query>
+              <ReturnType>Boolean</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>Public Visible</DisplayName>
+              <Query>
+                <HardcodedValue>/root/publicVisible</HardcodedValue>
+              </Query>
+              <ReturnType>Boolean</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>Access Permission</DisplayName>
+              <Query>
+                <HardcodedValue>/root/accessPermission</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>Account Name</DisplayName>
+              <Query>
+                <HardcodedValue>/root/accountName</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>Account Password</DisplayName>
+              <Query>
+                <HardcodedValue>/root/accountPassword</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+          </Queries>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>25b4e434-5be5-4942-940e-1bc94a6ed066</Id>
+        <DisplayName>Set Multiple Variables</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>2e5cde1e-2554-44d7-ba37-daf0f04cf9f1</Id>
+            <ActivityNodeId>25b4e434-5be5-4942-940e-1bc94a6ed066</ActivityNodeId>
+            <CompletedId>79f51599-5ecf-4327-854e-ea65c269492f</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SetMultipleVariableActivityConfiguration" xml:space="preserve">
+          <Id>25b4e434-5be5-4942-940e-1bc94a6ed066</Id>
+          <DisplayName>Set Multiple Variables</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ContainingProcessId>
+          <Assignments>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Delete Permission</DisplayPath>
+                <LinkChain />
+                <ObjectId>46d644a4-8ae4-4a65-80f1-e1c323f75db6</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableBoolean">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Delete Permission</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Delete Permission</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c904ad6f-0cfe-4fa6-9c75-dbb5e4ca3b32</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Read Permission</DisplayPath>
+                <LinkChain />
+                <ObjectId>17f04c28-4234-422f-8fad-20ab4b256052</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableBoolean">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Read Permission</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Read Permission</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c904ad6f-0cfe-4fa6-9c75-dbb5e4ca3b32</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Admin Permission</DisplayPath>
+                <LinkChain />
+                <ObjectId>9e22c217-48fb-454e-bc6b-3bbe0085350b</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableBoolean">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Admin Permission</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Admin Permission</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c904ad6f-0cfe-4fa6-9c75-dbb5e4ca3b32</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Write Permission</DisplayPath>
+                <LinkChain />
+                <ObjectId>d8cea989-ae7a-4f34-81c0-7c5363a7b36d</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableBoolean">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Write Permission</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Write Permission</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c904ad6f-0cfe-4fa6-9c75-dbb5e4ca3b32</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Account Display Name</DisplayPath>
+                <LinkChain />
+                <ObjectId>9854e9d6-ba46-4312-b130-5eee13b85e73</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Account Display Name</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Account Display Name</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c904ad6f-0cfe-4fa6-9c75-dbb5e4ca3b32</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.User Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>d34503e5-3be7-452f-8e77-113626e43d13</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.User Id</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>User Id</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c904ad6f-0cfe-4fa6-9c75-dbb5e4ca3b32</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Account Description</DisplayPath>
+                <LinkChain />
+                <ObjectId>3e72fd5e-3bf3-46ff-8ff7-131a4929d017</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Account Description</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Account Description</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c904ad6f-0cfe-4fa6-9c75-dbb5e4ca3b32</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Manage Cost</DisplayPath>
+                <LinkChain />
+                <ObjectId>0cb8d938-3f6e-4eb3-b908-c933bb92236e</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableBoolean">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Manage Cost</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Manage Cost</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c904ad6f-0cfe-4fa6-9c75-dbb5e4ca3b32</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Public Visible</DisplayPath>
+                <LinkChain />
+                <ObjectId>9308b6b6-1900-49f9-ab5c-57b29e4a4139</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableBoolean">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Public Visible</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Public Visible</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c904ad6f-0cfe-4fa6-9c75-dbb5e4ca3b32</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Access Permission</DisplayPath>
+                <LinkChain />
+                <ObjectId>b3f194ca-25af-42fc-a531-a94ad7d710aa</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Access Permission</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Access Permission</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c904ad6f-0cfe-4fa6-9c75-dbb5e4ca3b32</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Account Name</DisplayPath>
+                <LinkChain />
+                <ObjectId>fff0e9b0-d84a-47b7-96a3-de2958cab2a0</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <HardcodedValue />
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.Account Password</DisplayPath>
+                <LinkChain />
+                <ObjectId>27ccd90a-d80a-45c2-afd7-feec0a1353e7</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableEncryptedString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Account Password</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Account Password</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c904ad6f-0cfe-4fa6-9c75-dbb5e4ca3b32</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+          </Assignments>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>e90d8148-c3fb-4e76-a637-e0be4ba513d7</Id>
+        <DisplayName>Read Account Properties</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>503d9e05-aa66-4c04-91b5-4240cf71a2ff</Id>
+            <ActivityNodeId>e90d8148-c3fb-4e76-a637-e0be4ba513d7</ActivityNodeId>
+            <CompletedId>002d5ee0-1060-4050-83ad-01debc611449</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="ReadTableFromXmlActivityConfiguration" xml:space="preserve">
+          <Id>e90d8148-c3fb-4e76-a637-e0be4ba513d7</Id>
+          <DisplayName>Read Account Properties</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ContainingProcessId>
+          <Columns>
+            <BuiltinTableColumn>
+              <Name>name</Name>
+              <DataType>System.String</DataType>
+            </BuiltinTableColumn>
+            <BuiltinTableColumn>
+              <Name>value</Name>
+              <DataType>System.String</DataType>
+            </BuiltinTableColumn>
+          </Columns>
+          <XmlRowElementName>
+            <HardcodedValue>accountProperties</HardcodedValue>
+          </XmlRowElementName>
+          <XmlString>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Convert JSON to XML.XML Output</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Output</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>0e540d88-a362-4259-9987-3915156ce1b5</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </XmlString>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ForEachNode">
+        <Id>19661817-cd66-4264-9c2f-bdb02c781c1c</Id>
+        <DisplayName>For Each Account Property</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>01fd379b-89e6-4d1a-a2ba-08783e3ef187</Id>
+            <DisplayName>Add Row to Table</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>0aa8cb88-52bb-4559-a49b-99df36529ed7</Id>
+                <ActivityNodeId>01fd379b-89e6-4d1a-a2ba-08783e3ef187</ActivityNodeId>
+                <CompletedId>c6757c33-ca2e-461a-be8c-a5a8449e326f</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+              <Id>01fd379b-89e6-4d1a-a2ba-08783e3ef187</Id>
+              <DisplayName>Add Row to Table</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ContainingProcessId>
+              <TableVariable>
+                <DisplayPath>Process.Variables.Output.Properties</DisplayPath>
+                <LinkChain />
+                <ObjectId>46eecf10-9518-4906-9b8a-aa3413eb190f</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </TableVariable>
+              <Values>
+                <BuiltinDataCellValue>
+                  <ColumnName>Name</ColumnName>
+                  <Value xsi:type="SubstitutableString">
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.For Each Account Property.Item.name</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>name</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>19661817-cd66-4264-9c2f-bdb02c781c1c</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </Value>
+                </BuiltinDataCellValue>
+                <BuiltinDataCellValue>
+                  <ColumnName>Value</ColumnName>
+                  <Value xsi:type="SubstitutableString">
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.For Each Account Property.Item.value</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>value</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>19661817-cd66-4264-9c2f-bdb02c781c1c</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </Value>
+                </BuiltinDataCellValue>
+              </Values>
+            </Configuration>
+          </ActivityNode>
+        </Children>
+        <ForEachSource xsi:type="PropertyReference">
+          <DisplayPath>Workflow.Read Account Properties.Result Table.Rows</DisplayPath>
+          <LinkChain>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>ResultTable</PropertyName>
+            </Link>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>TIARows</PropertyName>
+            </Link>
+          </LinkChain>
+          <ObjectId>e90d8148-c3fb-4e76-a637-e0be4ba513d7</ObjectId>
+          <ObjectType>ActivityInstance</ObjectType>
+        </ForEachSource>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ProcessId>
+</WorkflowConfiguration>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>6b13cf57-d937-45ed-983e-bd69a0444337</Id>
+  <DisplayName>Convert Cloud Center Co-Admin User to Standard User</DisplayName>
+  <CreatedTime>2016-08-18T20:26:09.9152629Z</CreatedTime>
+  <ModifiedTime>2016-08-18T20:26:09.9052638Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>05ebac45-8a41-49e5-aa9f-d4d6ab2282ed</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>c47b2d8b-1f7f-4e28-b11a-a214b0b19585</Id>
+        <DisplayName>Execute Cloud Center Command</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>9416afda-9dc1-4312-8910-7e9a3785bcda</Id>
+            <ActivityNodeId>c47b2d8b-1f7f-4e28-b11a-a214b0b19585</ActivityNodeId>
+            <CompletedId>f7b4b028-8557-46f7-8879-0dc771ad2afb</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="CloudCenterExecuteCommandActivityConfiguration" xml:space="preserve">
+          <Id>c47b2d8b-1f7f-4e28-b11a-a214b0b19585</Id>
+          <DisplayName>Execute Cloud Center Command</DisplayName>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>cf4c2b7e-4862-4214-9d05-e506d0b5827e</ContainingProcessId>
+          <Path>
+            <FormattedCode>v1/users/{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.User Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>cd38f749-0efb-4194-8455-7566da0c4401</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Path>
+          <Method>POST</Method>
+          <Request>
+            <FormattedCode>{{
+    "action": "CONVERT_TO_STANDARD_USER"
+}}</FormattedCode>
+          </Request>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>cf4c2b7e-4862-4214-9d05-e506d0b5827e</ProcessId>
+</WorkflowConfiguration>

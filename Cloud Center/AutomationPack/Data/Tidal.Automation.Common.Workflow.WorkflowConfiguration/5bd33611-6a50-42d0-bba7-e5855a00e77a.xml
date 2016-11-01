@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>5bd33611-6a50-42d0-bba7-e5855a00e77a</Id>
+  <DisplayName>Change Cloud Center User Password</DisplayName>
+  <CreatedTime>2016-08-18T20:26:09.8752637Z</CreatedTime>
+  <ModifiedTime>2016-08-18T20:26:09.8652646Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>31b2b7c3-7670-403a-9270-05b10b4143a2</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>de77e8a7-3c6b-42d7-864d-560311255558</Id>
+        <DisplayName>Execute Cloud Center Command</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>862cf28e-0aa8-4b05-bc9f-e716c92c3ba6</Id>
+            <ActivityNodeId>de77e8a7-3c6b-42d7-864d-560311255558</ActivityNodeId>
+            <CompletedId>71d88c9d-fe57-4fd8-a3ef-ac133751eb19</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="CloudCenterExecuteCommandActivityConfiguration" xml:space="preserve">
+          <Id>de77e8a7-3c6b-42d7-864d-560311255558</Id>
+          <DisplayName>Execute Cloud Center Command</DisplayName>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>c871c1ae-5c68-4846-b2ef-ca40210d583e</ContainingProcessId>
+          <Path>
+            <FormattedCode>v1/users/{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.User Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>e99b7788-6158-4a12-b0a1-a2fb263707ea</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Path>
+          <Method>POST</Method>
+          <Request>
+            <FormattedCode>{{
+ 
+    "action": "CHANGE_PASSWORD",
+ 
+    "changePasswordData":
+    {{
+        "oldPassword": "{0}",
+        "newPassword": "{1}"
+    }}
+}}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Old Password</DisplayPath>
+                <LinkChain />
+                <ObjectId>eb4a3151-34b5-4948-9c6f-32c3ad8c413b</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.New Password</DisplayPath>
+                <LinkChain />
+                <ObjectId>59fb9ab0-2a86-48e3-be80-c04a4d73e4f4</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Request>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>7e3682a2-a118-4446-8c47-c508e3757853</Id>
+        <DisplayName>Convert JSON to XML</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>cf92e934-b15b-4ef8-83d9-1eac04047bcc</Id>
+            <ActivityNodeId>7e3682a2-a118-4446-8c47-c508e3757853</ActivityNodeId>
+            <CompletedId>7d0af00f-f34c-4ffd-a8fe-e9657b39ea52</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="JsonToXmlActivityConfiguration" xml:space="preserve">
+          <Id>7e3682a2-a118-4446-8c47-c508e3757853</Id>
+          <DisplayName>Convert JSON to XML</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>c871c1ae-5c68-4846-b2ef-ca40210d583e</ContainingProcessId>
+          <SourceText>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Execute Cloud Center Command.HTTP Response Message Body</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Response</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>de77e8a7-3c6b-42d7-864d-560311255558</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </SourceText>
+          <RootElementName>
+            <HardcodedValue>root</HardcodedValue>
+          </RootElementName>
+          <ReplaceList />
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>c871c1ae-5c68-4846-b2ef-ca40210d583e</ProcessId>
+</WorkflowConfiguration>

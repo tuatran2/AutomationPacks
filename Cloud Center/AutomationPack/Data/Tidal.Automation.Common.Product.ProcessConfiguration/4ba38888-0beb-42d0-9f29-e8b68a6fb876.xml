@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>4ba38888-0beb-42d0-9f29-e8b68a6fb876</Id>
+  <DisplayName>Get Cloud Center Cloud Account Details</DisplayName>
+  <CreatedTime>2016-08-18T20:26:08.8552841Z</CreatedTime>
+  <ModifiedTime>2016-08-18T20:26:08.845285Z</ModifiedTime>
+  <TargetLoadBalancer xsi:type="RequireOverrideLoadBalancer" />
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>fda3d18f-8144-4657-aa61-5eeffcc525d0</WorkflowId>
+  <CategoryIds>
+    <guid>25619a20-a664-41a8-8b72-26cb35e5ac40</guid>
+  </CategoryIds>
+  <TriggerOwner>79bd7b55-0fa8-4e14-bd0c-c1bf8ab07e98</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="AdHocEventDefinition">
+        <Id>b0a18ee2-3d47-44e5-9a4e-d956a60db463</Id>
+        <DisplayName>Started by User</DisplayName>
+        <Imported>true</Imported>
+        <Identities />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>4ecb48bb-f082-4cc2-85c0-6c1996626c56</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>fa0ac483-ac44-4e34-a9ee-1e4278a72353</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="StartProcessEventDefinition">
+        <Id>94a0ec17-ba48-4973-b96f-65b4274663db</Id>
+        <DisplayName>Started by Parent Process</DisplayName>
+        <Imported>true</Imported>
+        <ProcessIds />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>d816d20d-a1b8-4159-8944-0bc9c2e68e67</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>1ed371ad-c624-4796-b364-7c1bcef51cd6</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions>
+    <VariableConfiguration xsi:type="TableVariableConfiguration" xml:space="preserve">
+      <Id>46eecf10-9518-4906-9b8a-aa3413eb190f</Id>
+      <DisplayName>Properties</DisplayName>
+      <ModifiedTime>2016-08-06T18:17:17.8948999Z</ModifiedTime>
+      <FixedSchemaDataTable>
+        <FixedSchema>
+          <Columns>
+            <TableSchemaColumn>
+              <Name>Name</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Value</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+          </Columns>
+        </FixedSchema>
+      </FixedSchemaDataTable>
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>7a8e4440-e44c-4785-8a76-5efef6c4711e</Id>
+      <DisplayName>Cloud Id</DisplayName>
+      <ModifiedTime>2016-08-06T17:47:26.1908999Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+      <ValueRequired>true</ValueRequired>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>45eb88e4-caca-4502-9403-c64a51a48529</Id>
+      <DisplayName>Tenant Id</DisplayName>
+      <ModifiedTime>2016-08-06T14:42:04.1227466Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+      <ValueRequired>true</ValueRequired>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>b1f0adcd-a831-4629-88c4-253554014296</Id>
+      <DisplayName>Cloud Account Id</DisplayName>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+      <ValueRequired>true</ValueRequired>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="BooleanVariableConfiguration" xml:space="preserve">
+      <Id>17f04c28-4234-422f-8fad-20ab4b256052</Id>
+      <DisplayName>Read Permission</DisplayName>
+      <boolean>false</boolean>
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="BooleanVariableConfiguration" xml:space="preserve">
+      <Id>46d644a4-8ae4-4a65-80f1-e1c323f75db6</Id>
+      <DisplayName>Delete Permission</DisplayName>
+      <boolean>false</boolean>
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="BooleanVariableConfiguration" xml:space="preserve">
+      <Id>d8cea989-ae7a-4f34-81c0-7c5363a7b36d</Id>
+      <DisplayName>Write Permission</DisplayName>
+      <boolean>false</boolean>
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="BooleanVariableConfiguration" xml:space="preserve">
+      <Id>9e22c217-48fb-454e-bc6b-3bbe0085350b</Id>
+      <DisplayName>Admin Permission</DisplayName>
+      <ModifiedTime>2016-08-06T18:18:01.7358999Z</ModifiedTime>
+      <boolean>false</boolean>
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>9854e9d6-ba46-4312-b130-5eee13b85e73</Id>
+      <DisplayName>Account Display Name</DisplayName>
+      <ModifiedTime>2016-08-06T18:19:44.0798999Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>d34503e5-3be7-452f-8e77-113626e43d13</Id>
+      <DisplayName>User Id</DisplayName>
+      <ModifiedTime>2016-08-06T18:18:46.2448999Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>3e72fd5e-3bf3-46ff-8ff7-131a4929d017</Id>
+      <DisplayName>Account Description</DisplayName>
+      <ModifiedTime>2016-08-06T18:19:39.4398999Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="BooleanVariableConfiguration" xml:space="preserve">
+      <Id>0cb8d938-3f6e-4eb3-b908-c933bb92236e</Id>
+      <DisplayName>Manage Cost</DisplayName>
+      <boolean>false</boolean>
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="BooleanVariableConfiguration" xml:space="preserve">
+      <Id>9308b6b6-1900-49f9-ab5c-57b29e4a4139</Id>
+      <DisplayName>Public Visible</DisplayName>
+      <boolean>false</boolean>
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>b3f194ca-25af-42fc-a531-a94ad7d710aa</Id>
+      <DisplayName>Access Permission</DisplayName>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>fff0e9b0-d84a-47b7-96a3-de2958cab2a0</Id>
+      <DisplayName>Account Name</DisplayName>
+      <ModifiedTime>2016-08-06T18:19:32.9198999Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="EncryptedStringVariableConfiguration" xml:space="preserve">
+      <Id>27ccd90a-d80a-45c2-afd7-feec0a1353e7</Id>
+      <DisplayName>Account Password</DisplayName>
+      <EncryptedString>
+        <EncryptedForm />
+      </EncryptedString>
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>4ba38888-0beb-42d0-9f29-e8b68a6fb876</ControllingItemId>
+      </Scope>
+      <ValueRequired>false</ValueRequired>
+    </VariableConfiguration>
+  </VariableDefinitions>
+  <Notes />
+  <SmallImageReference xsi:type="ImageReferenceContained">
+    <FriendlyName>CliQr_16x16.bmp</FriendlyName>
+    <Bitmap>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALaSURBVDhPbZPJT1NRFMabuGDPH6GujBrjFFLFKQxKi+PChcZo3BjjEAfEilgUMG2EopKACtQIEaOlpVYBpwpW6ESrlMECLYLwGkFwQBDUn9dHija6+OXdm/O+756TfEcR+TTN3/RGxrG09GGo8aG95eTCbTelDwM8D0gx/0WJMbhW187GLDMrj5lQZtpIzGogMfuR+NaL+332Fdmxt8UayQZDY1NkljtQnjCxQfuEjfoW0gxeVEU+VJcFRa2kFXpI1TWTfP4x9xzhWIPCGj+rTppJzm9CZWhlv7EDo2OIhvYRrL735NtCbL7iQ33ZL+peUvMbcXQNzxi4giOsyTCRnNeIWryYea+b0PDk7AtRGtres002menoiNGH9HEKhbbKybqz9agKvewsbSMoff1HHKXCHhajeEkXnagL3bQEP6DYkfeQpLzncusXH4T+K4wSlMbZrHfIY6gMHm42DaBIOlMrz76pwI2xqf+/Qn/Hm9nznoJ6UvROUi55KavzokjJspCUaydV/5KSx70xwt90O6pw5cwlaMuR73t1FtbmvmS9zo2p/hmK3fo61msbxBh2Dpa5YsQvXB6cQjxwZSGjpYvprj3F60Ab2/V2lLkumt0uFMVWP6s1VmHyiHXZdVhdfbMG3kAX764n8vPmEqhcwviNxfSZDtDZGUBT/pS3gxKKbukzqnNWkbYHAhsbNDXctncyOPZNNpEiElN31VA+X2aiZB4hYzr9/W/luhwkqzOEUmRhtaZWRNbMisOVqM9Uc8xgQldaRU+Xj0nTVrgaD8XxTBniCRctIhRo+rMLdxqDJGdbUZ62oDxlJuH4HZYeqmLBgWpSMypp97cwencX33Vx/NDH8TU/jnDFlthl8vSOoBEbmKK1sey4iWUnaliRYWG5OB8tqGZo+BOD5iOMaecwdj2BiBgvxiDKwIdJEZovvOoZxOP30xMKMzQ6MVuXmiuIvPsduml+AfzZJ2GACS49AAAAAElFTkSuQmCC</Bitmap>
+  </SmallImageReference>
+  <LargeImageReference xsi:type="ImageReferenceContained">
+    <FriendlyName>CliQr32x32.png</FriendlyName>
+    <Bitmap>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</Bitmap>
+  </LargeImageReference>
+  <GeneralHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </GeneralHelp>
+  <GeneralInstanceHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </GeneralInstanceHelp>
+  <InputHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </InputHelp>
+  <InputInstanceHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </InputInstanceHelp>
+  <OutputHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </OutputHelp>
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.CloudCenter.Targets.CloudCenterServerTargetConfiguration, Tidal.Automation.CloudCenter.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>ec87bcc8-7db9-9aa7-3bdc-462325ff1762</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.WebService.Common.ClientCertificateUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.CloudCenter.Users.CloudCenterApiAccessCredentialsConfiguration, Tidal.Automation.CloudCenter.Common</string>
+    <string>Tidal.Automation.WebService.Common.OAuthUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.OpenStack.Common.User.OpenStackUserConfiguration, Tidal.Automation.OpenStack.Common</string>
+    <string>Tidal.Automation.Ssh.Common.PublicKeyAdminUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.Ssh.Common.IOSUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.BuiltinAdapter.Common.GenericRuntimeUserConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+    <string>Tidal.Automation.Azure.Common.AzureAccessKeyConfiguration, Tidal.Automation.Azure.Common</string>
+    <string>Tidal.Automation.Snmp.Common.SnmpUserConfiguration, Tidal.Automation.Snmp.Common</string>
+    <string>Tidal.Automation.vCloud.Common.Users.vCloudUserConfiguration, Tidal.Automation.vCloud.Common</string>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+</ProcessConfiguration>

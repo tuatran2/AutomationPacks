@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>9a33386f-225d-4063-835e-3264961c16c3</Id>
+  <DisplayName>Create Cloud Center User</DisplayName>
+  <CreatedTime>2016-08-18T20:26:09.6552681Z</CreatedTime>
+  <ModifiedTime>2016-08-18T20:26:09.645269Z</ModifiedTime>
+  <TargetLoadBalancer xsi:type="RequireOverrideLoadBalancer" />
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>92878631-933e-4720-b683-d925b50e161e</WorkflowId>
+  <CategoryIds>
+    <guid>1322c9fb-0882-450a-bf71-086b3a29526a</guid>
+  </CategoryIds>
+  <TriggerOwner>79bd7b55-0fa8-4e14-bd0c-c1bf8ab07e98</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="AdHocEventDefinition">
+        <Id>02d94662-baff-44df-b8cf-b37f340590e4</Id>
+        <DisplayName>Started by User</DisplayName>
+        <Imported>true</Imported>
+        <Identities />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>82dbc440-b770-42df-961d-463fae575875</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>cb51fdd3-8e9d-4488-87f1-f29773e20b0e</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="StartProcessEventDefinition">
+        <Id>f70feda9-8958-44b9-bb22-fb79c29fbab7</Id>
+        <DisplayName>Started by Parent Process</DisplayName>
+        <Imported>true</Imported>
+        <ProcessIds />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>38e0e2cf-ea4f-425a-8c1d-6c1d7edf8173</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>0f373696-ce60-493a-8ffc-024a9e50921d</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>ceea9d95-4a95-4edf-aed2-5c4e58b4eaf4</Id>
+      <DisplayName>First Name</DisplayName>
+      <ModifiedTime>2016-08-02T22:07:39.6852701Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>9a33386f-225d-4063-835e-3264961c16c3</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>80d80f7b-db9f-4830-905e-32ee3ee6d896</Id>
+      <DisplayName>Last Name</DisplayName>
+      <ModifiedTime>2016-08-02T22:07:43.3824938Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>9a33386f-225d-4063-835e-3264961c16c3</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>3e514ea9-27ba-4cc5-996f-7febeb566c2d</Id>
+      <DisplayName>Password</DisplayName>
+      <ModifiedTime>2016-08-02T21:59:14.1065527Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>9a33386f-225d-4063-835e-3264961c16c3</ControllingItemId>
+      </Scope>
+      <ValueRequired>true</ValueRequired>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>cfa78188-a1d3-4d70-8af1-d518d297a0e7</Id>
+      <DisplayName>Email Address</DisplayName>
+      <ModifiedTime>2016-08-02T22:07:56.5489782Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>9a33386f-225d-4063-835e-3264961c16c3</ControllingItemId>
+      </Scope>
+      <ValueRequired>true</ValueRequired>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>2dd838f1-ccda-4a66-9e48-aa5d21896580</Id>
+      <DisplayName>Company Name</DisplayName>
+      <ModifiedTime>2016-08-02T22:07:53.9437615Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>9a33386f-225d-4063-835e-3264961c16c3</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>5057fcc3-7545-4836-aaab-0099416704b5</Id>
+      <DisplayName>Phone Number</DisplayName>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>9a33386f-225d-4063-835e-3264961c16c3</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>53af8625-37e0-4e2d-a842-8f6ee442357d</Id>
+      <DisplayName>External Id</DisplayName>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>9a33386f-225d-4063-835e-3264961c16c3</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>1f20823b-d36c-410f-b6a8-5678e137d7ad</Id>
+      <DisplayName>Tenant Id</DisplayName>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>9a33386f-225d-4063-835e-3264961c16c3</ControllingItemId>
+      </Scope>
+      <ValueRequired>true</ValueRequired>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>bc304159-0853-4bc5-ac84-4baf7921be7c</Id>
+      <DisplayName>User Id</DisplayName>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>9a33386f-225d-4063-835e-3264961c16c3</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>17f83eb9-cf16-48ff-8ad3-fb4a134460d2</Id>
+      <DisplayName>User Name</DisplayName>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>9a33386f-225d-4063-835e-3264961c16c3</ControllingItemId>
+      </Scope>
+    </VariableConfiguration>
+  </VariableDefinitions>
+  <Notes />
+  <SmallImageReference xsi:type="ImageReferenceContained">
+    <FriendlyName>CliQr_16x16.bmp</FriendlyName>
+    <Bitmap>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALaSURBVDhPbZPJT1NRFMabuGDPH6GujBrjFFLFKQxKi+PChcZo3BjjEAfEilgUMG2EopKACtQIEaOlpVYBpwpW6ESrlMECLYLwGkFwQBDUn9dHija6+OXdm/O+756TfEcR+TTN3/RGxrG09GGo8aG95eTCbTelDwM8D0gx/0WJMbhW187GLDMrj5lQZtpIzGogMfuR+NaL+332Fdmxt8UayQZDY1NkljtQnjCxQfuEjfoW0gxeVEU+VJcFRa2kFXpI1TWTfP4x9xzhWIPCGj+rTppJzm9CZWhlv7EDo2OIhvYRrL735NtCbL7iQ33ZL+peUvMbcXQNzxi4giOsyTCRnNeIWryYea+b0PDk7AtRGtres002menoiNGH9HEKhbbKybqz9agKvewsbSMoff1HHKXCHhajeEkXnagL3bQEP6DYkfeQpLzncusXH4T+K4wSlMbZrHfIY6gMHm42DaBIOlMrz76pwI2xqf+/Qn/Hm9nznoJ6UvROUi55KavzokjJspCUaydV/5KSx70xwt90O6pw5cwlaMuR73t1FtbmvmS9zo2p/hmK3fo61msbxBh2Dpa5YsQvXB6cQjxwZSGjpYvprj3F60Ab2/V2lLkumt0uFMVWP6s1VmHyiHXZdVhdfbMG3kAX764n8vPmEqhcwviNxfSZDtDZGUBT/pS3gxKKbukzqnNWkbYHAhsbNDXctncyOPZNNpEiElN31VA+X2aiZB4hYzr9/W/luhwkqzOEUmRhtaZWRNbMisOVqM9Uc8xgQldaRU+Xj0nTVrgaD8XxTBniCRctIhRo+rMLdxqDJGdbUZ62oDxlJuH4HZYeqmLBgWpSMypp97cwencX33Vx/NDH8TU/jnDFlthl8vSOoBEbmKK1sey4iWUnaliRYWG5OB8tqGZo+BOD5iOMaecwdj2BiBgvxiDKwIdJEZovvOoZxOP30xMKMzQ6MVuXmiuIvPsduml+AfzZJ2GACS49AAAAAElFTkSuQmCC</Bitmap>
+  </SmallImageReference>
+  <LargeImageReference xsi:type="ImageReferenceContained">
+    <FriendlyName>CliQr32x32.png</FriendlyName>
+    <Bitmap>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</Bitmap>
+  </LargeImageReference>
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.CloudCenter.Targets.CloudCenterServerTargetConfiguration, Tidal.Automation.CloudCenter.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>ec87bcc8-7db9-9aa7-3bdc-462325ff1762</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.WebService.Common.ClientCertificateUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.CloudCenter.Users.CloudCenterApiAccessCridentials, Tidal.Automation.CloudCenter.Common</string>
+    <string>Tidal.Automation.WebService.Common.OAuthUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.OpenStack.Common.User.OpenStackUserConfiguration, Tidal.Automation.OpenStack.Common</string>
+    <string>Tidal.Automation.Ssh.Common.PublicKeyAdminUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.Ssh.Common.IOSUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.BuiltinAdapter.Common.GenericRuntimeUserConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+    <string>Tidal.Automation.Azure.Common.AzureAccessKeyConfiguration, Tidal.Automation.Azure.Common</string>
+    <string>Tidal.Automation.Snmp.Common.SnmpUserConfiguration, Tidal.Automation.Snmp.Common</string>
+    <string>Tidal.Automation.vCloud.Common.Users.vCloudUserConfiguration, Tidal.Automation.vCloud.Common</string>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+</ProcessConfiguration>

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>a65d5cd2-1c23-4920-b8d2-5f92326a28e4</Id>
+  <DisplayName>Get Cloud Center Deployment Environments</DisplayName>
+  <CreatedTime>2016-08-18T20:26:09.3952733Z</CreatedTime>
+  <ModifiedTime>2016-08-18T20:26:09.3852742Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>1f555a20-9819-4b08-a48d-789a9969ca26</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>169a2393-f36c-4733-85e5-3212d4559baf</Id>
+        <DisplayName>Execute Cloud Center Command</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>269587ba-0433-4306-897f-9de17ef46702</Id>
+            <ActivityNodeId>169a2393-f36c-4733-85e5-3212d4559baf</ActivityNodeId>
+            <CompletedId>ae6f24cf-2716-419d-8213-15ebfe5c642c</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="CloudCenterExecuteCommandActivityConfiguration" xml:space="preserve">
+          <Id>169a2393-f36c-4733-85e5-3212d4559baf</Id>
+          <DisplayName>Execute Cloud Center Command</DisplayName>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>94db9d08-cb65-4abb-b267-f023cf2e0cf4</ContainingProcessId>
+          <Path>
+            <HardcodedValue>v1/environments</HardcodedValue>
+          </Path>
+          <Method>GET</Method>
+          <Request>
+            <HardcodedValue />
+          </Request>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>1c5fb249-80aa-43dd-99c0-08a8d26dbf56</Id>
+        <DisplayName>Convert JSON to XML</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>163653aa-5b1a-4e63-a94c-7cd3c928c571</Id>
+            <ActivityNodeId>1c5fb249-80aa-43dd-99c0-08a8d26dbf56</ActivityNodeId>
+            <CompletedId>eee1d2b2-1918-4bf2-a06a-57a60170548d</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="JsonToXmlActivityConfiguration" xml:space="preserve">
+          <Id>1c5fb249-80aa-43dd-99c0-08a8d26dbf56</Id>
+          <DisplayName>Convert JSON to XML</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>94db9d08-cb65-4abb-b267-f023cf2e0cf4</ContainingProcessId>
+          <SourceText>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Execute Cloud Center Command.HTTP Response Message Body</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Response</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>169a2393-f36c-4733-85e5-3212d4559baf</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </SourceText>
+          <RootElementName>
+            <HardcodedValue>root</HardcodedValue>
+          </RootElementName>
+          <ReplaceList />
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>94db9d08-cb65-4abb-b267-f023cf2e0cf4</ProcessId>
+</WorkflowConfiguration>

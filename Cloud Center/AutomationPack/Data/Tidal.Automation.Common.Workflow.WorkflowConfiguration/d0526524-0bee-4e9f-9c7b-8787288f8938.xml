@@ -1,0 +1,261 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>d0526524-0bee-4e9f-9c7b-8787288f8938</Id>
+  <DisplayName>Create Cloud Center Cloud</DisplayName>
+  <CreatedTime>2016-08-18T20:26:10.1052591Z</CreatedTime>
+  <ModifiedTime>2016-08-18T20:26:10.09526Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>2c6d0afd-6f9f-479b-9730-99c6e8a7f480</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>bf5835cb-7b7e-4786-ad39-628f43fe9f8e</Id>
+        <DisplayName>Execute Cloud Center Command</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>4f82704b-6e6f-42ad-8dda-0b01fedc407f</Id>
+            <ActivityNodeId>bf5835cb-7b7e-4786-ad39-628f43fe9f8e</ActivityNodeId>
+            <CompletedId>12c58e57-614d-4d5c-9ac9-19a7df8d814d</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="CloudCenterExecuteCommandActivityConfiguration" xml:space="preserve">
+          <Id>bf5835cb-7b7e-4786-ad39-628f43fe9f8e</Id>
+          <DisplayName>Execute Cloud Center Command</DisplayName>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>fcbe87b1-899f-4d8b-99d4-171544a0e015</ContainingProcessId>
+          <Path>
+            <FormattedCode>v1/tenants/{0}/clouds</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Tenant Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>66ef36c7-47c5-44c2-8d77-b2694abe66c7</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Path>
+          <Method>POST</Method>
+          <Request>
+            <FormattedCode>{{
+    "name": "{0}",
+    "description": "{1}",
+    "cloudFamily": "{2}",
+    "publicCloud": {3},
+    "tenantId": {4}
+}}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Cloud Name</DisplayPath>
+                <LinkChain />
+                <ObjectId>757c32b4-5fa8-4efe-9f89-c4a5daf81f18</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Description</DisplayPath>
+                <LinkChain />
+                <ObjectId>c427495f-7412-42f6-ba65-e8b4aeefe56c</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Cloud Family</DisplayPath>
+                <LinkChain />
+                <ObjectId>fc761b2b-458b-4ece-a591-a17da0c3be54</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Public Cloud</DisplayPath>
+                <LinkChain />
+                <ObjectId>d67904d3-8c1c-43f5-bd0b-2bdadbb9ca6b</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Tenant Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>66ef36c7-47c5-44c2-8d77-b2694abe66c7</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Request>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>cc3958bd-3a74-4436-b823-09b2006b9e04</Id>
+        <DisplayName>Convert JSON to XML</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>d748e6d7-8b0d-4e8f-ab04-68990c63c625</Id>
+            <ActivityNodeId>cc3958bd-3a74-4436-b823-09b2006b9e04</ActivityNodeId>
+            <CompletedId>19d1e8df-c029-4866-a63d-2c4168513aad</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="JsonToXmlActivityConfiguration" xml:space="preserve">
+          <Id>cc3958bd-3a74-4436-b823-09b2006b9e04</Id>
+          <DisplayName>Convert JSON to XML</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>fcbe87b1-899f-4d8b-99d4-171544a0e015</ContainingProcessId>
+          <SourceText>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Execute Cloud Center Command.HTTP Response Message Body</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Response</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>bf5835cb-7b7e-4786-ad39-628f43fe9f8e</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </SourceText>
+          <RootElementName>
+            <HardcodedValue>root</HardcodedValue>
+          </RootElementName>
+          <ReplaceList />
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="CompletedNode">
+        <Id>05534b26-3e93-4fa7-bd6b-b3721997a7dc</Id>
+        <CompletedType>Succeeded</CompletedType>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>c3ce1aeb-9a34-42d7-a974-cb2c6b81d67e</Id>
+        <DisplayName>XPath Query</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>d28549b7-b82c-4681-bd68-39aa3610a0ae</Id>
+            <ActivityNodeId>c3ce1aeb-9a34-42d7-a974-cb2c6b81d67e</ActivityNodeId>
+            <CompletedId>942616de-30fc-48ca-8fe7-15847d7870b2</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="XPathQueryActivityConfiguration" xml:space="preserve">
+          <Id>c3ce1aeb-9a34-42d7-a974-cb2c6b81d67e</Id>
+          <DisplayName>XPath Query</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>fcbe87b1-899f-4d8b-99d4-171544a0e015</ContainingProcessId>
+          <SourceXml>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Convert JSON to XML.XML Output</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Output</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>cc3958bd-3a74-4436-b823-09b2006b9e04</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </SourceXml>
+          <Namespaces />
+          <Queries>
+            <XPathQueryDefinition>
+              <DisplayName>Id</DisplayName>
+              <Query>
+                <HardcodedValue>/root/id</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+            <XPathQueryDefinition>
+              <DisplayName>User Name</DisplayName>
+              <Query>
+                <HardcodedValue>/root/username</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+          </Queries>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>abf72ad2-feaf-4442-b016-ceae95fd1734</Id>
+        <DisplayName>Set Multiple Variables</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>816564f8-d4a9-4d02-912e-0bab4cea2ef0</Id>
+            <ActivityNodeId>abf72ad2-feaf-4442-b016-ceae95fd1734</ActivityNodeId>
+            <CompletedId>cfbdee02-c4af-4568-ae8c-caa68db9c0e6</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SetMultipleVariableActivityConfiguration" xml:space="preserve">
+          <Id>abf72ad2-feaf-4442-b016-ceae95fd1734</Id>
+          <DisplayName>Set Multiple Variables</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>fcbe87b1-899f-4d8b-99d4-171544a0e015</ContainingProcessId>
+          <Assignments>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.User Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>ff5f92d2-0b6b-4ba8-89a3-b9ea9872e8f8</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.Id</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Id</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c3ce1aeb-9a34-42d7-a974-cb2c6b81d67e</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+            <PropertyReferenceValuePair>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Output.User Name</DisplayPath>
+                <LinkChain />
+                <ObjectId>6447a818-4f7b-492c-ab04-3bf0a8b40eb4</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.XPath Query.Results.User Name</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Results</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>User Name</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c3ce1aeb-9a34-42d7-a974-cb2c6b81d67e</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </PropertyReferenceValuePair>
+          </Assignments>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>fcbe87b1-899f-4d8b-99d4-171544a0e015</ProcessId>
+</WorkflowConfiguration>

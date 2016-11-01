@@ -1,0 +1,1320 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>ac934aac-d067-4539-a2c6-90dff1853e03</Id>
+  <DisplayName>Update Cloud Center User</DisplayName>
+  <CreatedTime>2016-08-18T20:26:09.2552761Z</CreatedTime>
+  <ModifiedTime>2016-08-18T20:26:09.245277Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>d535a4d0-6e04-4760-b357-c7414d52155d</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="StartProcessNode">
+        <Id>f250afa7-943c-46da-a4fa-1c7504cc3256</Id>
+        <DisplayName>Get Cloud Center User Details</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>4b36a5ec-d2dd-45f1-8f25-a5417bdf7f68</Id>
+            <ProcessNodeId>f250afa7-943c-46da-a4fa-1c7504cc3256</ProcessNodeId>
+            <CompletedId>7f3dd495-7e31-40e3-a91d-c5150ab1ea2c</CompletedId>
+          </ActivityNode>
+        </Children>
+        <ProcessId>84dd1fb0-84d2-4621-9a34-af0332a33cdf</ProcessId>
+        <InputVariableTable>
+          <VariableAssignmentsAsArray>
+            <InputVariableAssignment>
+              <InputVariableId>64db6c19-f8c4-4679-9553-86acbf05c815</InputVariableId>
+              <VariableValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Input.User Id</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>1e40b8af-7bd3-41e0-8e4b-1e6b860d705c</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </VariableValue>
+            </InputVariableAssignment>
+          </VariableAssignmentsAsArray>
+        </InputVariableTable>
+        <Asynchronous>false</Asynchronous>
+        <InheritTarget>true</InheritTarget>
+        <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+        <InheritPriorityClass>true</InheritPriorityClass>
+        <RuntimeUserId>
+          <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+        </RuntimeUserId>
+        <KnowledgeBaseId>00000000-0000-0000-0000-000000000000</KnowledgeBaseId>
+        <StartPointId>
+          <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+        </StartPointId>
+        <StartPointName>
+          <FormattedCode />
+        </StartPointName>
+      </ActivityNode>
+      <ActivityNode xsi:type="SequenceNode">
+        <Id>e9b4205b-c036-4633-bbe6-f1595a485fbf</Id>
+        <DisplayName>Sequential Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>1a04ef65-a706-4ba8-b027-bb5d4715c5bf</Id>
+            <DisplayName>Set User Id</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>a74ed0d4-bfb3-4912-bad4-33a56e07f4d6</Id>
+                <ActivityNodeId>1a04ef65-a706-4ba8-b027-bb5d4715c5bf</ActivityNodeId>
+                <CompletedId>f4bc116a-ecf5-4a90-be84-e9cc11480721</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+              <Id>1a04ef65-a706-4ba8-b027-bb5d4715c5bf</Id>
+              <DisplayName>Set User Id</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                <LinkChain />
+                <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}
+    "id": "{1}",</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Input.User Id</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>1e40b8af-7bd3-41e0-8e4b-1e6b860d705c</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </Configuration>
+          </ActivityNode>
+          <ActivityNode xsi:type="SwitchNode">
+            <Id>d86ca899-4157-46f5-87ca-a8bc5daed865</Id>
+            <DisplayName>Update First Name?</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>43fafffe-520d-4b12-afce-e0fba30f2d64</Id>
+                <DisplayName>Yes</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>8b68a66a-f250-40ab-923d-480b53387fb8</Id>
+                    <DisplayName>Set New First Name</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>82c71fc6-5b00-4e9a-8df4-636bff614af6</Id>
+                        <ActivityNodeId>8b68a66a-f250-40ab-923d-480b53387fb8</ActivityNodeId>
+                        <CompletedId>0639222d-3f4b-4087-b302-d297f93cc541</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>8b68a66a-f250-40ab-923d-480b53387fb8</Id>
+                      <DisplayName>Set New First Name</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <FormattedCode>{0}
+    "firstName": "{1}",</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Input.First Name</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>30aef838-793c-49a6-a3e0-36d282273ef1</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>27219336-39d3-4e39-aeee-67f8a0853653</Id>
+                  <Conditions>
+                    <ConditionDefinition xsi:type="VariableConditionDefinition">
+                      <Id>eac67932-3b51-4fca-96f8-1c85a58f50ef</Id>
+                      <Expression xsi:type="SubstitutableString">
+                        <HardcodedValue>&lt;No Change&gt;</HardcodedValue>
+                      </Expression>
+                      <Comparison>NotEquals</Comparison>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Input.First Name</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>30aef838-793c-49a6-a3e0-36d282273ef1</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </ConditionDefinition>
+                  </Conditions>
+                </Condition>
+              </ActivityNode>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>9a619009-4ee4-4e76-b5fe-62b00f58dd9a</Id>
+                <DisplayName>No</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>77e4b554-5d1a-4694-9340-27938bbfbdcc</Id>
+                    <DisplayName>Restore First Name</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>f049cd5e-c9eb-44d5-aa44-d4ec239b8ca1</Id>
+                        <ActivityNodeId>77e4b554-5d1a-4694-9340-27938bbfbdcc</ActivityNodeId>
+                        <CompletedId>25dc3958-e962-4ca7-a37b-3a53e4bd466b</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>77e4b554-5d1a-4694-9340-27938bbfbdcc</Id>
+                      <DisplayName>Restore First Name</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <FormattedCode>{0}
+    "firstName": "{1}",</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Get Cloud Center User Details.First Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="ProcessOutputVariableLink">
+                                <LaunchingActivityId>f250afa7-943c-46da-a4fa-1c7504cc3256</LaunchingActivityId>
+                                <OutputVariableId>fa621df2-7a62-477d-af5b-dae9c7de292c</OutputVariableId>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>f250afa7-943c-46da-a4fa-1c7504cc3256</ObjectId>
+                            <ObjectType>WorkflowNode</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>e24ebfa4-14b5-4b7d-8c37-4caa9b2f3913</Id>
+                  <Conditions />
+                </Condition>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="SwitchNode">
+            <Id>d2753c2d-8261-45e6-9b5f-3330cb3ead38</Id>
+            <DisplayName>Update Last Name?</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>9223cee8-1af1-41f3-abcc-4efefe836c3d</Id>
+                <DisplayName>Yes</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>c4bf678d-2336-4cfe-aa03-702653f9047f</Id>
+                    <DisplayName>Set New Last Name</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>158e2018-6c8e-47ac-a4ea-620102488613</Id>
+                        <ActivityNodeId>c4bf678d-2336-4cfe-aa03-702653f9047f</ActivityNodeId>
+                        <CompletedId>7aaad469-13ab-4e8d-946f-dc249c16934f</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>c4bf678d-2336-4cfe-aa03-702653f9047f</Id>
+                      <DisplayName>Set New Last Name</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <FormattedCode>{0}
+    "lastName": "{1}",</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Input.Last Name</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>e6ffe051-cab1-4d8b-bfc8-471216abd0bc</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>27219336-39d3-4e39-aeee-67f8a0853653</Id>
+                  <Conditions>
+                    <ConditionDefinition xsi:type="VariableConditionDefinition">
+                      <Id>eac67932-3b51-4fca-96f8-1c85a58f50ef</Id>
+                      <Expression xsi:type="SubstitutableString">
+                        <HardcodedValue>&lt;No Change&gt;</HardcodedValue>
+                      </Expression>
+                      <Comparison>NotEquals</Comparison>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Input.Last Name</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>e6ffe051-cab1-4d8b-bfc8-471216abd0bc</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </ConditionDefinition>
+                  </Conditions>
+                </Condition>
+              </ActivityNode>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>e6cb1447-92b6-40a0-b18f-cd31a95a0b31</Id>
+                <DisplayName>No</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>75fbb597-5d46-4441-b85c-05dab0d68dc4</Id>
+                    <DisplayName>Restore Last Name</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>63c50494-6546-417f-953c-19b8fac4fb7e</Id>
+                        <ActivityNodeId>75fbb597-5d46-4441-b85c-05dab0d68dc4</ActivityNodeId>
+                        <CompletedId>29f4853a-5366-41f2-a3b9-0715f891580a</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>75fbb597-5d46-4441-b85c-05dab0d68dc4</Id>
+                      <DisplayName>Restore Last Name</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <FormattedCode>{0}
+    "lastName": "{1}",</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Get Cloud Center User Details.Last Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="ProcessOutputVariableLink">
+                                <LaunchingActivityId>f250afa7-943c-46da-a4fa-1c7504cc3256</LaunchingActivityId>
+                                <OutputVariableId>5ca963d5-6510-40dc-acfa-8d705ff0da90</OutputVariableId>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>f250afa7-943c-46da-a4fa-1c7504cc3256</ObjectId>
+                            <ObjectType>WorkflowNode</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>e24ebfa4-14b5-4b7d-8c37-4caa9b2f3913</Id>
+                  <Conditions />
+                </Condition>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>7e27b6c3-c6f3-48f3-954b-00c93f66c50a</Id>
+            <DisplayName>Update Password?</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>26a36b6e-ee45-45e6-a0f8-4d32107955f7</Id>
+                <DisplayName>Set New Password</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                    <Id>bb21ade4-bde4-4342-b7c9-afc15e229589</Id>
+                    <ActivityNodeId>26a36b6e-ee45-45e6-a0f8-4d32107955f7</ActivityNodeId>
+                    <CompletedId>6d76ba40-1ad9-41fd-b5bd-c24ee4f46d05</CompletedId>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                  <Id>26a36b6e-ee45-45e6-a0f8-4d32107955f7</Id>
+                  <DisplayName>Set New Password</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+                  <VariableToSet>
+                    <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableToSet>
+                  <NewValue xsi:type="SubstitutableString">
+                    <FormattedCode>{0}
+    "password": "{1}",</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Input.Password</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>06c98c10-6568-4607-8105-2d5e13e6fe8a</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </NewValue>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>3c2b1086-e643-4ff3-8df2-a18622d94b41</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>455f4040-9aab-4bb3-b013-8fe44d1b7b2f</Id>
+                  <Expression xsi:type="SubstitutableString">
+                    <HardcodedValue>&lt;No Change&gt;</HardcodedValue>
+                  </Expression>
+                  <Comparison>NotEquals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Input.Password</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>06c98c10-6568-4607-8105-2d5e13e6fe8a</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+          <ActivityNode xsi:type="SwitchNode">
+            <Id>79aef057-096d-48a5-bc82-423ed45fa6ec</Id>
+            <DisplayName>Update Email Address?</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>a84597b2-67bb-464b-8a87-39d33356f907</Id>
+                <DisplayName>Yes</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>778cd9ac-1bf8-4612-9907-9b6989644327</Id>
+                    <DisplayName>Set New Email Address</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>cc7d8c3a-3fbd-412c-8ae6-8ec323dc1aec</Id>
+                        <ActivityNodeId>778cd9ac-1bf8-4612-9907-9b6989644327</ActivityNodeId>
+                        <CompletedId>a52f05e5-525e-4b91-88f6-265ad812f295</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>778cd9ac-1bf8-4612-9907-9b6989644327</Id>
+                      <DisplayName>Set New Email Address</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <FormattedCode>{0}
+    "emailAddr": "{1}",</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Input.Email Address</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>ea35f337-70d4-4f63-b822-3fbb33837735</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>27219336-39d3-4e39-aeee-67f8a0853653</Id>
+                  <Conditions>
+                    <ConditionDefinition xsi:type="VariableConditionDefinition">
+                      <Id>eac67932-3b51-4fca-96f8-1c85a58f50ef</Id>
+                      <Expression xsi:type="SubstitutableString">
+                        <HardcodedValue>&lt;No Change&gt;</HardcodedValue>
+                      </Expression>
+                      <Comparison>NotEquals</Comparison>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Input.Email Address</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>ea35f337-70d4-4f63-b822-3fbb33837735</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </ConditionDefinition>
+                  </Conditions>
+                </Condition>
+              </ActivityNode>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>59b919c0-20e4-4a63-b208-820fdc4c63a9</Id>
+                <DisplayName>No</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>edc6e621-8569-484f-8863-92cb4400852b</Id>
+                    <DisplayName>Restore Email Address</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>52ada592-4eee-4343-aec4-201e5e07a754</Id>
+                        <ActivityNodeId>edc6e621-8569-484f-8863-92cb4400852b</ActivityNodeId>
+                        <CompletedId>a276814f-f561-4e0b-aed7-740b779fd1a9</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>edc6e621-8569-484f-8863-92cb4400852b</Id>
+                      <DisplayName>Restore Email Address</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <FormattedCode>{0}
+    "emailAddr": "{1}",</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Get Cloud Center User Details.Email Address</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="ProcessOutputVariableLink">
+                                <LaunchingActivityId>f250afa7-943c-46da-a4fa-1c7504cc3256</LaunchingActivityId>
+                                <OutputVariableId>4cb18fa2-8230-4a7b-b9ac-af956ec7b504</OutputVariableId>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>f250afa7-943c-46da-a4fa-1c7504cc3256</ObjectId>
+                            <ObjectType>WorkflowNode</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>e24ebfa4-14b5-4b7d-8c37-4caa9b2f3913</Id>
+                  <Conditions />
+                </Condition>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="SwitchNode">
+            <Id>2e579a8d-a4d4-4175-99a4-82facbbc71c5</Id>
+            <DisplayName>Update Company Name?</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>966e91c0-a0d8-4cdd-bbde-d55ce9d3239a</Id>
+                <DisplayName>Yes</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>2f093979-481e-462f-b030-7001f28d9c3b</Id>
+                    <DisplayName>Set New Company Name</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>525e1a9f-4474-4a87-a878-eb969b438d45</Id>
+                        <ActivityNodeId>2f093979-481e-462f-b030-7001f28d9c3b</ActivityNodeId>
+                        <CompletedId>a97c8766-6bbc-4dac-b137-a328469ddcea</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>2f093979-481e-462f-b030-7001f28d9c3b</Id>
+                      <DisplayName>Set New Company Name</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <FormattedCode>{0}
+    "companyName": "{1}",</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Input.Company Name</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>bb357c94-d41d-4427-8327-4876d51aec1b</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>27219336-39d3-4e39-aeee-67f8a0853653</Id>
+                  <Conditions>
+                    <ConditionDefinition xsi:type="VariableConditionDefinition">
+                      <Id>eac67932-3b51-4fca-96f8-1c85a58f50ef</Id>
+                      <Expression xsi:type="SubstitutableString">
+                        <HardcodedValue>&lt;No Change&gt;</HardcodedValue>
+                      </Expression>
+                      <Comparison>NotEquals</Comparison>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Input.Company Name</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>bb357c94-d41d-4427-8327-4876d51aec1b</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </ConditionDefinition>
+                  </Conditions>
+                </Condition>
+              </ActivityNode>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>37d23294-ac5e-4aa1-84b0-5ad7c2d71bdf</Id>
+                <DisplayName>No</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>287c400a-ff35-4f5f-971d-93f7be353d6b</Id>
+                    <DisplayName>Restore Company Name</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>49ee2880-abbe-45dc-9fd3-dcf9f169f82a</Id>
+                        <ActivityNodeId>287c400a-ff35-4f5f-971d-93f7be353d6b</ActivityNodeId>
+                        <CompletedId>d618cf0b-ac52-4ba9-9fec-ed696fa53a20</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>287c400a-ff35-4f5f-971d-93f7be353d6b</Id>
+                      <DisplayName>Restore Company Name</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <FormattedCode>{0}
+    "companyName": "{1}",</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Get Cloud Center User Details.Company Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="ProcessOutputVariableLink">
+                                <LaunchingActivityId>f250afa7-943c-46da-a4fa-1c7504cc3256</LaunchingActivityId>
+                                <OutputVariableId>eec5fc3a-803d-432b-80d2-cf808e136d64</OutputVariableId>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>f250afa7-943c-46da-a4fa-1c7504cc3256</ObjectId>
+                            <ObjectType>WorkflowNode</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>e24ebfa4-14b5-4b7d-8c37-4caa9b2f3913</Id>
+                  <Conditions />
+                </Condition>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>2edf7a01-da5c-4223-9663-3bab3108bac0</Id>
+            <DisplayName>Update Phone Number?</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>4b2843d5-1cde-49d8-a697-c887850864c0</Id>
+                <DisplayName>Set Phone Number</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                    <Id>9dd2eb03-b592-4a20-b6e5-785197b66e9e</Id>
+                    <ActivityNodeId>4b2843d5-1cde-49d8-a697-c887850864c0</ActivityNodeId>
+                    <CompletedId>29d75b24-1f78-4407-92ce-a40b7695b0d2</CompletedId>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                  <Id>4b2843d5-1cde-49d8-a697-c887850864c0</Id>
+                  <DisplayName>Set Phone Number</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+                  <VariableToSet>
+                    <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableToSet>
+                  <NewValue xsi:type="SubstitutableString">
+                    <FormattedCode>{0}
+    "phoneNumber": "{1}",</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Input.Phone Number</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>7d6885bb-1bcd-4fa3-b920-597e03334276</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </NewValue>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>3c2b1086-e643-4ff3-8df2-a18622d94b41</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>455f4040-9aab-4bb3-b013-8fe44d1b7b2f</Id>
+                  <Expression xsi:type="SubstitutableString">
+                    <HardcodedValue>&lt;No Change&gt;</HardcodedValue>
+                  </Expression>
+                  <Comparison>NotEquals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Input.Phone Number</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>7d6885bb-1bcd-4fa3-b920-597e03334276</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>71eb7f03-58e9-4746-96e6-5eb6a96c752f</Id>
+            <DisplayName>Update External Id?</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>4a745c13-7e32-4b68-a953-91f66583cd27</Id>
+                <DisplayName>Set External Id</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                    <Id>9b0c4be5-c686-4ca3-bbda-b9ba43d02fad</Id>
+                    <ActivityNodeId>4a745c13-7e32-4b68-a953-91f66583cd27</ActivityNodeId>
+                    <CompletedId>2c31769e-9feb-4166-97ef-66917f4870a9</CompletedId>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                  <Id>4a745c13-7e32-4b68-a953-91f66583cd27</Id>
+                  <DisplayName>Set External Id</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+                  <VariableToSet>
+                    <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableToSet>
+                  <NewValue xsi:type="SubstitutableString">
+                    <FormattedCode>{0}
+    "externalId": "{1}",</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Input.External Id</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>bee3cb2f-22cd-4112-a9c6-069c65507746</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </NewValue>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>3c2b1086-e643-4ff3-8df2-a18622d94b41</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>455f4040-9aab-4bb3-b013-8fe44d1b7b2f</Id>
+                  <Expression xsi:type="SubstitutableString">
+                    <HardcodedValue>&lt;No Change&gt;</HardcodedValue>
+                  </Expression>
+                  <Comparison>NotEquals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Input.External Id</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>bee3cb2f-22cd-4112-a9c6-069c65507746</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+          <ActivityNode xsi:type="SwitchNode">
+            <Id>355a95dd-e628-4128-a729-754083d40365</Id>
+            <DisplayName>Update Tenant Id?</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>1e7fffc5-97c3-4178-b4d0-7b467e0e0416</Id>
+                <DisplayName>Yes</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>59529cd6-c72d-4030-879d-9416e5d48ca9</Id>
+                    <DisplayName>Set New Tenant Id</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>b8907ec4-19a3-46c7-a98f-37e0bc4a0bec</Id>
+                        <ActivityNodeId>59529cd6-c72d-4030-879d-9416e5d48ca9</ActivityNodeId>
+                        <CompletedId>1b04acc4-faf6-48b1-8fed-16d3931f7641</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>59529cd6-c72d-4030-879d-9416e5d48ca9</Id>
+                      <DisplayName>Set New Tenant Id</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <FormattedCode>{0}
+    "tenantId": "{1}",</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Input.Tenant Id</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>3b456ab6-279b-4f6c-a4da-36d01e1e339a</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>27219336-39d3-4e39-aeee-67f8a0853653</Id>
+                  <Conditions>
+                    <ConditionDefinition xsi:type="VariableConditionDefinition">
+                      <Id>eac67932-3b51-4fca-96f8-1c85a58f50ef</Id>
+                      <Expression xsi:type="SubstitutableString">
+                        <HardcodedValue>&lt;No Change&gt;</HardcodedValue>
+                      </Expression>
+                      <Comparison>NotEquals</Comparison>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Input.Tenant Id</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>3b456ab6-279b-4f6c-a4da-36d01e1e339a</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </ConditionDefinition>
+                  </Conditions>
+                </Condition>
+              </ActivityNode>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>38aeef79-b611-4925-9632-367c0ade369b</Id>
+                <DisplayName>No</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>fdb71f01-51b3-4672-9cb2-ba05ed38604c</Id>
+                    <DisplayName>Restore Tenant Id</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>5c919a50-80e4-44df-af2f-5cb172485337</Id>
+                        <ActivityNodeId>fdb71f01-51b3-4672-9cb2-ba05ed38604c</ActivityNodeId>
+                        <CompletedId>3aa0b452-8be8-4627-8705-71fe16a01bd4</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>fdb71f01-51b3-4672-9cb2-ba05ed38604c</Id>
+                      <DisplayName>Restore Tenant Id</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <FormattedCode>{0}
+    "tenantId": "{1}",</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Get Cloud Center User Details.Tenant Id</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="ProcessOutputVariableLink">
+                                <LaunchingActivityId>f250afa7-943c-46da-a4fa-1c7504cc3256</LaunchingActivityId>
+                                <OutputVariableId>eea24e9f-e18d-4d24-8234-b6941f46a75b</OutputVariableId>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>f250afa7-943c-46da-a4fa-1c7504cc3256</ObjectId>
+                            <ObjectType>WorkflowNode</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>e24ebfa4-14b5-4b7d-8c37-4caa9b2f3913</Id>
+                  <Conditions />
+                </Condition>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>9c3ab6e2-210a-4877-8719-25dadb575595</Id>
+            <DisplayName>Restore User Name</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>132df104-3afa-4595-a0e9-f12197857f9b</Id>
+                <ActivityNodeId>9c3ab6e2-210a-4877-8719-25dadb575595</ActivityNodeId>
+                <CompletedId>8db5feb0-738c-4557-94e4-1bda011379ab</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+              <Id>9c3ab6e2-210a-4877-8719-25dadb575595</Id>
+              <DisplayName>Restore User Name</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                <LinkChain />
+                <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}
+    "username": "{1}",</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Get Cloud Center User Details.User Name</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="ProcessOutputVariableLink">
+                        <LaunchingActivityId>f250afa7-943c-46da-a4fa-1c7504cc3256</LaunchingActivityId>
+                        <OutputVariableId>9981753b-ef9e-4ae6-95d6-81950da2909b</OutputVariableId>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>f250afa7-943c-46da-a4fa-1c7504cc3256</ObjectId>
+                    <ObjectType>WorkflowNode</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </Configuration>
+          </ActivityNode>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>a4b0dcdb-e6db-43ad-af4b-c686a8193d58</Id>
+            <DisplayName>Restore Account Source</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>f1b4126e-2ebc-4784-aa2b-eac739b5803f</Id>
+                <ActivityNodeId>a4b0dcdb-e6db-43ad-af4b-c686a8193d58</ActivityNodeId>
+                <CompletedId>a6b90669-8f82-4d20-ae2e-7d098e55fd03</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+              <Id>a4b0dcdb-e6db-43ad-af4b-c686a8193d58</Id>
+              <DisplayName>Restore Account Source</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                <LinkChain />
+                <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}
+    "accountSource": "{1}",</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Get Cloud Center User Details.Account Source</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="ProcessOutputVariableLink">
+                        <LaunchingActivityId>f250afa7-943c-46da-a4fa-1c7504cc3256</LaunchingActivityId>
+                        <OutputVariableId>c7377f71-bb77-4354-9ac9-56cdb5ed63de</OutputVariableId>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>f250afa7-943c-46da-a4fa-1c7504cc3256</ObjectId>
+                    <ObjectType>WorkflowNode</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </Configuration>
+          </ActivityNode>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>de355bda-89e7-4e0f-9671-59c26cf7ad92</Id>
+            <DisplayName>Restore Type</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>71be6fd6-7222-4b8f-b082-13be78f10ac4</Id>
+                <ActivityNodeId>de355bda-89e7-4e0f-9671-59c26cf7ad92</ActivityNodeId>
+                <CompletedId>0c9ec2d0-deb2-465a-af18-a4643bdb3530</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+              <Id>de355bda-89e7-4e0f-9671-59c26cf7ad92</Id>
+              <DisplayName>Restore Type</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                <LinkChain />
+                <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}
+    "type": "{1}",</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Get Cloud Center User Details.Type</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="ProcessOutputVariableLink">
+                        <LaunchingActivityId>f250afa7-943c-46da-a4fa-1c7504cc3256</LaunchingActivityId>
+                        <OutputVariableId>9291b6bb-10b9-4d3e-8134-322988219bed</OutputVariableId>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>f250afa7-943c-46da-a4fa-1c7504cc3256</ObjectId>
+                    <ObjectType>WorkflowNode</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </Configuration>
+          </ActivityNode>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>abb56a2d-456b-4ac9-a930-3157c0c69a6f</Id>
+            <DisplayName>Remove Trailing Comma</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>b0c17ab7-1783-46c1-b738-af9777281f2d</Id>
+                <ActivityNodeId>abb56a2d-456b-4ac9-a930-3157c0c69a6f</ActivityNodeId>
+                <CompletedId>529045ee-9e27-4576-8e7b-aae978e43eb8</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="TrimStringActivityConfiguration" xml:space="preserve">
+              <Id>abb56a2d-456b-4ac9-a930-3157c0c69a6f</Id>
+              <DisplayName>Remove Trailing Comma</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+              <InputString>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </InputString>
+              <TrimCharacters>
+                <HardcodedValue>,</HardcodedValue>
+              </TrimCharacters>
+              <TrimOption>Trailing</TrimOption>
+            </Configuration>
+          </ActivityNode>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>55d057bd-2275-4a70-9dfc-7f82a0127225</Id>
+            <DisplayName>Append Closing Tag</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>310f179b-0b53-4f64-80eb-b550e3ba1f21</Id>
+                <ActivityNodeId>55d057bd-2275-4a70-9dfc-7f82a0127225</ActivityNodeId>
+                <CompletedId>280f1524-aa46-411e-a4db-7eb08d9b7b6b</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+              <Id>55d057bd-2275-4a70-9dfc-7f82a0127225</Id>
+              <DisplayName>Append Closing Tag</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                <LinkChain />
+                <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}
+}}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Remove Trailing Comma.Trim Result</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Result</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>abb56a2d-456b-4ac9-a930-3157c0c69a6f</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </Configuration>
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>736da280-73d7-4131-ae28-3dd7ffad2687</Id>
+        <DisplayName>Execute Cloud Center Command</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>71599436-7fa3-41fb-8d94-c0f42dd6d6c5</Id>
+            <ActivityNodeId>736da280-73d7-4131-ae28-3dd7ffad2687</ActivityNodeId>
+            <CompletedId>731e4a84-ba83-4259-a81d-2f51b7932f5f</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="CloudCenterExecuteCommandActivityConfiguration" xml:space="preserve">
+          <Id>736da280-73d7-4131-ae28-3dd7ffad2687</Id>
+          <DisplayName>Execute Cloud Center Command</DisplayName>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+          <Path>
+            <FormattedCode>/v1/users/{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.User Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>1e40b8af-7bd3-41e0-8e4b-1e6b860d705c</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Path>
+          <Method>PUT</Method>
+          <Request>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Local.Request</DisplayPath>
+                <LinkChain />
+                <ObjectId>37c47e4d-ea02-42a2-8451-eb3fdb204298</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Request>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>37eae8f4-38d0-4d77-a460-0713e63b2e40</Id>
+        <DisplayName>Convert JSON to XML</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>e2c14d1c-cf73-461f-afdd-3f173a6faba0</Id>
+            <ActivityNodeId>37eae8f4-38d0-4d77-a460-0713e63b2e40</ActivityNodeId>
+            <CompletedId>427de09e-aa68-49c1-9f62-5cb3f7d79748</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="JsonToXmlActivityConfiguration" xml:space="preserve">
+          <Id>37eae8f4-38d0-4d77-a460-0713e63b2e40</Id>
+          <DisplayName>Convert JSON to XML</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ContainingProcessId>
+          <SourceText>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Execute Cloud Center Command.Raw response body</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Response</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>736da280-73d7-4131-ae28-3dd7ffad2687</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </SourceText>
+          <RootElementName>
+            <HardcodedValue>root</HardcodedValue>
+          </RootElementName>
+          <ReplaceList />
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>79a3d298-2b20-467b-99b5-294a5c7ed74c</ProcessId>
+</WorkflowConfiguration>

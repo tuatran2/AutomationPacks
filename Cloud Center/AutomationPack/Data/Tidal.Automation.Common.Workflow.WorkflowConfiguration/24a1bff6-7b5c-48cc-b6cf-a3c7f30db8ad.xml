@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>24a1bff6-7b5c-48cc-b6cf-a3c7f30db8ad</Id>
+  <DisplayName>Activate Cloud Center User</DisplayName>
+  <CreatedTime>2016-08-18T20:26:08.5552901Z</CreatedTime>
+  <ModifiedTime>2016-08-18T20:26:08.545291Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>bf82fbc1-a360-4ca6-8193-e8c3f8771394</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>744346be-41db-41ab-bcc6-fc45ccc06f5e</Id>
+        <DisplayName>Execute Cloud Center Command</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>26ede107-4d56-4c6d-8c32-095bd6494fb3</Id>
+            <ActivityNodeId>744346be-41db-41ab-bcc6-fc45ccc06f5e</ActivityNodeId>
+            <CompletedId>afa18624-9fa6-4371-9e13-e14567fce649</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="CloudCenterExecuteCommandActivityConfiguration" xml:space="preserve">
+          <Id>744346be-41db-41ab-bcc6-fc45ccc06f5e</Id>
+          <DisplayName>Execute Cloud Center Command</DisplayName>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>254d1bf1-8dec-4831-83f8-8d5219d96ac6</ContainingProcessId>
+          <Path>
+            <FormattedCode>v1/users/{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.User Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>f1c4e170-5a8f-4bcc-91f8-fd1b7934c4f1</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Path>
+          <Method>POST</Method>
+          <Request>
+            <FormattedCode>{{
+    "action": "ACTIVATE",
+    "userActivationData": {{
+        "planId": "{0}",
+        "contractId": "1",
+        "activateRegions": [
+            {{
+                "regionId": "1"
+            }},
+            {{
+                "regionId": "2"
+            }}
+        ],
+        "agreeToContract": true,
+        "sendActivationEmail": false,
+        "defaultStorageSize": 0,
+        "importApps": [
+            "1"
+        ]
+    }}
+}}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Plan Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>b6414e1b-2c87-4d51-9ea2-aad6698668ff</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Request>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>254d1bf1-8dec-4831-83f8-8d5219d96ac6</ProcessId>
+</WorkflowConfiguration>

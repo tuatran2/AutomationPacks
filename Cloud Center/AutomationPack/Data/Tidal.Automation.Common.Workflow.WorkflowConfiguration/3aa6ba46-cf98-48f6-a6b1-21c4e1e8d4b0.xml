@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>3aa6ba46-cf98-48f6-a6b1-21c4e1e8d4b0</Id>
+  <DisplayName>Convert Cloud Center Standard User to Co-Admin</DisplayName>
+  <CreatedTime>2016-08-18T20:26:09.9552621Z</CreatedTime>
+  <ModifiedTime>2016-08-18T20:26:09.945263Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>8ed8af19-5eee-441c-8374-08292bf00797</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>28b59fe7-8167-495c-80e6-6eca58fc23bc</Id>
+        <DisplayName>Execute Cloud Center Command</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>72e2e85d-24ca-4989-ac3e-f6f635780ffe</Id>
+            <ActivityNodeId>28b59fe7-8167-495c-80e6-6eca58fc23bc</ActivityNodeId>
+            <CompletedId>3315b07e-c566-4418-bac7-24b59e154178</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="CloudCenterExecuteCommandActivityConfiguration" xml:space="preserve">
+          <Id>28b59fe7-8167-495c-80e6-6eca58fc23bc</Id>
+          <DisplayName>Execute Cloud Center Command</DisplayName>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>e10d6fb9-1252-4f50-9fca-dce89e12e434</ContainingProcessId>
+          <Path>
+            <FormattedCode>v1/users/{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.User Id</DisplayPath>
+                <LinkChain />
+                <ObjectId>62eb07e1-5503-4051-bd97-03fab6e38eb4</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Path>
+          <Method>POST</Method>
+          <Request>
+            <FormattedCode>{{
+    "action": "CONVERT_TO_TENANT_ADMIN"
+}}</FormattedCode>
+          </Request>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>e10d6fb9-1252-4f50-9fca-dce89e12e434</ProcessId>
+</WorkflowConfiguration>
