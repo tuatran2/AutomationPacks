@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PropertyExtensionValueConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>25ce475b-75ab-4372-9fde-4485aa65c1e1</Id>
+  <CreatedTime>2016-08-20T12:25:02.3208125Z</CreatedTime>
+  <ModifiedTime>2016-08-20T12:25:02.3208125Z</ModifiedTime>
+  <PropertyExtensionId>c80a1379-2ade-42a9-95c0-c916206c7fdf</PropertyExtensionId>
+  <ObjectId>ad1095d8-7ccb-41a8-8120-75e8bd370ce7</ObjectId>
+  <string>SOAP</string>
+</PropertyExtensionValueConfiguration>

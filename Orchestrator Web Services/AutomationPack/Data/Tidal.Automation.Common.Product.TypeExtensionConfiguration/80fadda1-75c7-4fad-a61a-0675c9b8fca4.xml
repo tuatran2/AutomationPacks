@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<TypeExtensionConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>80fadda1-75c7-4fad-a61a-0675c9b8fca4</Id>
+  <DisplayName>Orchestrator Web Serivce</DisplayName>
+  <CreatedTime>2016-08-20T12:25:02.2808129Z</CreatedTime>
+  <ModifiedTime>2016-08-20T12:25:02.2808129Z</ModifiedTime>
+  <CopiedFrom>994464f9-58d3-46aa-87ea-d2dd8ecf8eaa</CopiedFrom>
+  <ConfigurationType>Tidal.Automation.WebService.Common.WebTargetConfiguration, Tidal.Automation.WebService.Common</ConfigurationType>
+  <BaseTypeExtensionId>86e5a024-9ad5-462c-819b-c0e479e34d17</BaseTypeExtensionId>
+  <Creatable>true</Creatable>
+  <NorthboundName>OrchestratorWebSerivce</NorthboundName>
+  <NorthboundExposed>true</NorthboundExposed>
+</TypeExtensionConfiguration>

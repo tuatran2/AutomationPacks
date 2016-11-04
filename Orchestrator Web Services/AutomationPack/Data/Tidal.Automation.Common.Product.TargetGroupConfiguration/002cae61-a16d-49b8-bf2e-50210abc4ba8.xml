@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<TargetGroupConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ByTypeTargetGroupConfiguration" xml:space="preserve">
+  <Id>002cae61-a16d-49b8-bf2e-50210abc4ba8</Id>
+  <DisplayName>All Orchestrator Web Services</DisplayName>
+  <CreatedTime>2016-08-20T12:25:02.4408113Z</CreatedTime>
+  <ModifiedTime>2016-08-20T12:25:02.4408113Z</ModifiedTime>
+  <Enabled>true</Enabled>
+  <TargetType>Tidal.Automation.WebService.Common.WebTargetConfiguration, Tidal.Automation.WebService.Common</TargetType>
+  <TargetTypeExtensionId>80fadda1-75c7-4fad-a61a-0675c9b8fca4</TargetTypeExtensionId>
+  <TargetCriteria />
+</TargetGroupConfiguration>

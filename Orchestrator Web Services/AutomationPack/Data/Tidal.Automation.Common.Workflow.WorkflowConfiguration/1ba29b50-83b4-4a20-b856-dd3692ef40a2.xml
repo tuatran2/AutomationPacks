@@ -1,0 +1,255 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>1ba29b50-83b4-4a20-b856-dd3692ef40a2</Id>
+  <DisplayName>Create Web Service Target</DisplayName>
+  <VersionNumber>8</VersionNumber>
+  <CreatedTime>2016-08-20T12:26:22.2400133Z</CreatedTime>
+  <ModifiedTime>2016-08-21T12:18:43.5919268Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>1c0e558d-d226-444d-a4fe-609fbf324790</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ParallelNode">
+        <Id>c5ae38e1-1367-403f-b556-e4a0c72ae2c6</Id>
+        <DisplayName>Create Process Orchestrator Target Examples</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>cb51dc68-0bde-485a-8b4a-44a70eb960eb</Id>
+            <DisplayName>HTTP</DisplayName>
+            <Children />
+          </ActivityNode>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>79e84250-8a78-4f51-bb30-21a615c7fa4f</Id>
+            <DisplayName>Web Service</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>45aa4f03-6b29-417b-9321-c0afefb842a7</Id>
+                <DisplayName>Web Service Execute</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                    <Id>8a76e4e3-a766-4237-8a15-effe07337ae1</Id>
+                    <ActivityNodeId>45aa4f03-6b29-417b-9321-c0afefb842a7</ActivityNodeId>
+                    <CompletedId>b3ecb3b4-cec9-436b-8333-df68866b4916</CompletedId>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="WebServiceExecuteTargetAwareActivityConfiguration" xml:space="preserve">
+                  <Id>45aa4f03-6b29-417b-9321-c0afefb842a7</Id>
+                  <DisplayName>Web Service Execute</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+                    <SingleTargetReference>
+                      <FormattedCode />
+                      <HardcodedValue>
+                        <Id>f1e3cf5e-143b-4f87-a873-66c37414c821</Id>
+                        <ObjectType>Target</ObjectType>
+                      </HardcodedValue>
+                    </SingleTargetReference>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>d7d28b7f-49f7-431d-8479-9529a3f2ab75</ContainingProcessId>
+                  <UseCredentials>true</UseCredentials>
+                  <Url>
+                    <HardcodedValue>http://localhost:61527/ws/target?wsdl</HardcodedValue>
+                  </Url>
+                  <Method>
+                    <HardcodedValue>CreateWebTarget</HardcodedValue>
+                  </Method>
+                  <ProtocolName>TargetService</ProtocolName>
+                  <Parameters>
+                    <WebServiceExecuteActivityParameter>
+                      <ParameterName>defaultRuntimeUserNameOrId</ParameterName>
+                      <ParameterAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ParameterAssemblyTypeName>
+                      <ParameterTypeName>System.String</ParameterTypeName>
+                      <Value>
+                        <ValueTypeName>System.String</ValueTypeName>
+                        <ValueAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ValueAssemblyTypeName>
+                        <PrimitiveValue xsi:type="SubstitutableString">
+                          <HardcodedValue>Orchestrator Server User</HardcodedValue>
+                        </PrimitiveValue>
+                      </Value>
+                    </WebServiceExecuteActivityParameter>
+                    <WebServiceExecuteActivityParameter>
+                      <ParameterName>Validate</ParameterName>
+                      <ParameterAssemblyTypeName>System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ParameterAssemblyTypeName>
+                      <ParameterTypeName>System.Boolean</ParameterTypeName>
+                      <Value>
+                        <ValueTypeName>System.Boolean</ValueTypeName>
+                        <ValueAssemblyTypeName>System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ValueAssemblyTypeName>
+                        <PrimitiveValue xsi:type="SubstitutableBoolean">
+                          <HardcodedValue>false</HardcodedValue>
+                        </PrimitiveValue>
+                      </Value>
+                    </WebServiceExecuteActivityParameter>
+                    <WebServiceExecuteActivityParameter>
+                      <ParameterName>BaseUrl</ParameterName>
+                      <ParameterAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ParameterAssemblyTypeName>
+                      <ParameterTypeName>System.String</ParameterTypeName>
+                      <Value>
+                        <ValueTypeName>System.String</ValueTypeName>
+                        <ValueAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ValueAssemblyTypeName>
+                        <PrimitiveValue xsi:type="SubstitutableString">
+                          <HardcodedValue>http://www.yahoo.com</HardcodedValue>
+                        </PrimitiveValue>
+                      </Value>
+                    </WebServiceExecuteActivityParameter>
+                    <WebServiceExecuteActivityParameter>
+                      <ParameterName>IgnoreCertificateErrors</ParameterName>
+                      <ParameterAssemblyTypeName>System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ParameterAssemblyTypeName>
+                      <ParameterTypeName>System.Boolean</ParameterTypeName>
+                      <Value>
+                        <ValueTypeName>System.Boolean</ValueTypeName>
+                        <ValueAssemblyTypeName>System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ValueAssemblyTypeName>
+                        <PrimitiveValue xsi:type="SubstitutableBoolean">
+                          <HardcodedValue>false</HardcodedValue>
+                        </PrimitiveValue>
+                      </Value>
+                    </WebServiceExecuteActivityParameter>
+                    <WebServiceExecuteActivityParameter>
+                      <ParameterName>IgnoreCertificateErrorsSpecified</ParameterName>
+                      <ParameterAssemblyTypeName>System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ParameterAssemblyTypeName>
+                      <ParameterTypeName>System.Boolean</ParameterTypeName>
+                      <Value>
+                        <ValueTypeName>System.Boolean</ValueTypeName>
+                        <ValueAssemblyTypeName>System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ValueAssemblyTypeName>
+                        <PrimitiveValue xsi:type="SubstitutableBoolean">
+                          <HardcodedValue>false</HardcodedValue>
+                        </PrimitiveValue>
+                      </Value>
+                    </WebServiceExecuteActivityParameter>
+                    <WebServiceExecuteActivityParameter>
+                      <ParameterName>ProxyServerAddress</ParameterName>
+                      <ParameterAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ParameterAssemblyTypeName>
+                      <ParameterTypeName>System.String</ParameterTypeName>
+                      <Value>
+                        <ValueTypeName>System.String</ValueTypeName>
+                        <ValueAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ValueAssemblyTypeName>
+                        <PrimitiveValue xsi:type="SubstitutableString">
+                          <HardcodedValue />
+                        </PrimitiveValue>
+                      </Value>
+                    </WebServiceExecuteActivityParameter>
+                    <WebServiceExecuteActivityParameter>
+                      <ParameterName>ProxyPortNumber</ParameterName>
+                      <ParameterAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ParameterAssemblyTypeName>
+                      <ParameterTypeName>System.String</ParameterTypeName>
+                      <Value>
+                        <ValueTypeName>System.String</ValueTypeName>
+                        <ValueAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ValueAssemblyTypeName>
+                        <PrimitiveValue xsi:type="SubstitutableString">
+                          <HardcodedValue>8080</HardcodedValue>
+                        </PrimitiveValue>
+                      </Value>
+                    </WebServiceExecuteActivityParameter>
+                    <WebServiceExecuteActivityParameter>
+                      <ParameterName>ProxyAuthentication</ParameterName>
+                      <ParameterAssemblyTypeName>Tidal.WebServices.Proxy.ProxyAuthentication, l540hh0y, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</ParameterAssemblyTypeName>
+                      <ParameterTypeName>Tidal.WebServices.Proxy.ProxyAuthentication</ParameterTypeName>
+                      <Value>
+                        <ValueTypeName>Tidal.WebServices.Proxy.ProxyAuthentication</ValueTypeName>
+                        <ValueAssemblyTypeName>Tidal.WebServices.Proxy.ProxyAuthentication, l540hh0y, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</ValueAssemblyTypeName>
+                        <ValueStyle>Xml</ValueStyle>
+                        <XmlValue>
+                          <HardcodedValue>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ProxyAuthentication&gt;None&lt;/ProxyAuthentication&gt;</HardcodedValue>
+                        </XmlValue>
+                      </Value>
+                    </WebServiceExecuteActivityParameter>
+                    <WebServiceExecuteActivityParameter>
+                      <ParameterName>ProxyAuthenticationSpecified</ParameterName>
+                      <ParameterAssemblyTypeName>System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ParameterAssemblyTypeName>
+                      <ParameterTypeName>System.Boolean</ParameterTypeName>
+                      <Value>
+                        <ValueTypeName>System.Boolean</ValueTypeName>
+                        <ValueAssemblyTypeName>System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ValueAssemblyTypeName>
+                        <PrimitiveValue xsi:type="SubstitutableBoolean">
+                          <HardcodedValue>false</HardcodedValue>
+                        </PrimitiveValue>
+                      </Value>
+                    </WebServiceExecuteActivityParameter>
+                    <WebServiceExecuteActivityParameter>
+                      <ParameterName>ProxySpecifiedCredential</ParameterName>
+                      <ParameterAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ParameterAssemblyTypeName>
+                      <ParameterTypeName>System.String</ParameterTypeName>
+                      <Value>
+                        <ValueTypeName>System.String</ValueTypeName>
+                        <ValueAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ValueAssemblyTypeName>
+                        <PrimitiveValue xsi:type="SubstitutableString">
+                          <HardcodedValue />
+                        </PrimitiveValue>
+                      </Value>
+                    </WebServiceExecuteActivityParameter>
+                    <WebServiceExecuteActivityParameter>
+                      <ParameterName>Enabled</ParameterName>
+                      <ParameterAssemblyTypeName>System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ParameterAssemblyTypeName>
+                      <ParameterTypeName>System.Boolean</ParameterTypeName>
+                      <Value>
+                        <ValueTypeName>System.Boolean</ValueTypeName>
+                        <ValueAssemblyTypeName>System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ValueAssemblyTypeName>
+                        <PrimitiveValue xsi:type="SubstitutableBoolean">
+                          <HardcodedValue>true</HardcodedValue>
+                        </PrimitiveValue>
+                      </Value>
+                    </WebServiceExecuteActivityParameter>
+                    <WebServiceExecuteActivityParameter>
+                      <ParameterName>Name</ParameterName>
+                      <ParameterAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ParameterAssemblyTypeName>
+                      <ParameterTypeName>System.String</ParameterTypeName>
+                      <Value>
+                        <ValueTypeName>System.String</ValueTypeName>
+                        <ValueAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ValueAssemblyTypeName>
+                        <PrimitiveValue xsi:type="SubstitutableString">
+                          <HardcodedValue>Test</HardcodedValue>
+                        </PrimitiveValue>
+                      </Value>
+                    </WebServiceExecuteActivityParameter>
+                    <WebServiceExecuteActivityParameter>
+                      <ParameterName>Description</ParameterName>
+                      <ParameterAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ParameterAssemblyTypeName>
+                      <ParameterTypeName>System.String</ParameterTypeName>
+                      <Value>
+                        <ValueTypeName>System.String</ValueTypeName>
+                        <ValueAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ValueAssemblyTypeName>
+                        <PrimitiveValue xsi:type="SubstitutableString">
+                          <HardcodedValue>this is a test.</HardcodedValue>
+                        </PrimitiveValue>
+                      </Value>
+                    </WebServiceExecuteActivityParameter>
+                    <WebServiceExecuteActivityParameter>
+                      <ParameterName>Organization</ParameterName>
+                      <ParameterAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ParameterAssemblyTypeName>
+                      <ParameterTypeName>System.String</ParameterTypeName>
+                      <Value>
+                        <ValueTypeName>System.String</ValueTypeName>
+                        <ValueAssemblyTypeName>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</ValueAssemblyTypeName>
+                        <PrimitiveValue xsi:type="SubstitutableString">
+                          <HardcodedValue />
+                        </PrimitiveValue>
+                      </Value>
+                    </WebServiceExecuteActivityParameter>
+                  </Parameters>
+                  <Headers />
+                  <RelativeURL>
+                    <HardcodedValue>target?wsdl</HardcodedValue>
+                  </RelativeURL>
+                  <RelativeEndpointURL>
+                    <FormattedCode />
+                  </RelativeEndpointURL>
+                  <UseAlternateWsdlFilePath>false</UseAlternateWsdlFilePath>
+                  <UseAlternateEndpoint>false</UseAlternateEndpoint>
+                  <WsdlFileUserId>
+                    <FormattedCode>00000000-0000-0000-0000-000000000000</FormattedCode>
+                  </WsdlFileUserId>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>60c7e585-6983-4003-8985-11ef2214eed1</Id>
+            <DisplayName>PowerShell</DisplayName>
+            <Children />
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>d7d28b7f-49f7-431d-8479-9529a3f2ab75</ProcessId>
+</WorkflowConfiguration>

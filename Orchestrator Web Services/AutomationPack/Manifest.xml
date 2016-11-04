@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<AutomationPackConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>3777ffa4-f977-4cca-ae4e-a57a6ec2a6e2</Id>
+  <DisplayName>Automation Tests - Orchestrator Web Services</DisplayName>
+  <VersionNumber>-1</VersionNumber>
+  <CreatedTime>2016-08-19T21:04:35.8564264Z</CreatedTime>
+  <ModifiedTime>2016-08-21T21:50:16.4544876Z</ModifiedTime>
+  <CompanyName>Trial</CompanyName>
+  <Version>1.0.0.2</Version>
+  <ExportProductVersion>3.3.0.70</ExportProductVersion>
+  <PublishDate>2016-08-21T21:50:16.4354876Z</PublishDate>
+  <ImportDate>2016-08-20T12:25:02.4608111Z</ImportDate>
+  <DescriptionUrl />
+  <Copyright>Trial 2016</Copyright>
+  <ObjectEntries />
+  <AutomationPacks />
+  <Adapters>
+    <AdapterInfo>
+      <Id>042b6e8a-90b1-4518-aa3e-398399e1b195</Id>
+      <Company>Cisco</Company>
+      <DisplayName>Core Functions Adapter</DisplayName>
+      <Version>3.3.0.0</Version>
+      <Description>Provides core functionality that is required by the Cisco Process Orchestrator Server.</Description>
+    </AdapterInfo>
+    <AdapterInfo>
+      <Id>7d14cfa1-c747-40c0-a0ff-ffa60460919d</Id>
+      <Company>Cisco</Company>
+      <DisplayName>Web Service Adapter</DisplayName>
+      <Version>3.3.0.0</Version>
+      <Description>Provides activity to call Web Service methods.</Description>
+    </AdapterInfo>
+  </Adapters>
+  <PageEntries>
+    <PageEntry>
+      <TypeName>Tidal.Automation.WinForms.Setup.WebServiceConfigCustomImportTask</TypeName>
+      <Parameters>
+        <ImportCustomTaskParameter>
+          <ParameterName>DefaultAuthentication</ParameterName>
+          <ParameterValue>Ntlm</ParameterValue>
+        </ImportCustomTaskParameter>
+        <ImportCustomTaskParameter>
+          <ParameterName>ShowAlways</ParameterName>
+          <ParameterValue>True</ParameterValue>
+        </ImportCustomTaskParameter>
+        <ImportCustomTaskParameter>
+          <ParameterName>CustomTaskHeader</ParameterName>
+          <ParameterValue>Tidal Enterprise Orchestrator Web Service</ParameterValue>
+        </ImportCustomTaskParameter>
+      </Parameters>
+    </PageEntry>
+    <PageEntry>
+      <TypeName>Tidal.Automation.WinForms.Setup.RestfulWebServiceConfigCustomImportTask, Tidal.Automation.WinForms.Objects</TypeName>
+      <Parameters>
+        <ImportCustomTaskParameter>
+          <ParameterName>DefaultAuthentication</ParameterName>
+          <ParameterValue>Ntlm</ParameterValue>
+        </ImportCustomTaskParameter>
+        <ImportCustomTaskParameter>
+          <ParameterName>ShowAlways</ParameterName>
+          <ParameterValue>True</ParameterValue>
+        </ImportCustomTaskParameter>
+        <ImportCustomTaskParameter>
+          <ParameterName>CustomTaskHelpAlias</ParameterName>
+          <ParameterValue />
+        </ImportCustomTaskParameter>
+      </Parameters>
+    </PageEntry>
+  </PageEntries>
+  <PrerequisiteEntries />
+  <ReplaceUnexportableObject>true</ReplaceUnexportableObject>
+  <CommunityAP>false</CommunityAP>
+  <AdapterPrerequisiteIds />
+  <StyleCheckerIds>
+    <guid>86e1fa54-a8e4-4d0b-b3f5-b485558ac77a</guid>
+    <guid>b8cfeec5-33b1-4c0b-a671-537c05ce04b5</guid>
+    <guid>bfe2fc0e-dcdc-4c77-8ba0-fdea8a8c3d17</guid>
+    <guid>a7d191a0-5f78-4bcc-ab11-be27b4bc3e24</guid>
+    <guid>08275560-6103-48cf-8589-092f57007155</guid>
+    <guid>f70ea962-412f-453d-8931-9cb8e4cff88e</guid>
+    <guid>1edb60aa-4c14-4b54-b7d9-59e5e86beb7c</guid>
+    <guid>d3a2894c-3774-4cf9-90cd-0887eb0ed8ab</guid>
+    <guid>3088a77e-6e65-4584-8739-da3ab2bf2420</guid>
+    <guid>2727e338-18d1-4081-9eea-e3525bbd3850</guid>
+    <guid>00a2dfe9-3fa2-41a2-bc0f-c3ae995f9d56</guid>
+    <guid>da678ae5-5e79-4227-864d-38485bc8d886</guid>
+    <guid>636d0afc-1356-4604-882d-8314f1c9893e</guid>
+    <guid>cd9e3036-8dd4-4811-897b-4c7661bbf258</guid>
+    <guid>8d9acbc9-2140-4886-ba19-621c2a3f98e3</guid>
+    <guid>53afb722-5eb5-4eab-9fdd-b17b7a3fec4c</guid>
+    <guid>428f2c39-b8ec-4c59-9fc3-8eb962a15b03</guid>
+    <guid>2caf19b6-1eaf-491e-9e52-55ffbaa6c416</guid>
+    <guid>847edc1c-7a70-420e-8904-004b35f4aa6d</guid>
+    <guid>f9cd03f6-ad4b-4bed-a6c0-253951fdf929</guid>
+    <guid>798f1dda-0396-4c70-9506-6ea7935b4313</guid>
+    <guid>d0bd766d-ae3e-402e-9ced-fcc7dc507e58</guid>
+    <guid>48aed50f-f15f-412c-bc84-55e4b83eecd0</guid>
+    <guid>e205b0eb-e992-4f1e-8e1b-77418bb987fa</guid>
+  </StyleCheckerIds>
+  <AlwaysArchive>false</AlwaysArchive>
+  <Patches />
+</AutomationPackConfiguration>

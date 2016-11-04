@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<TargetGroupConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ByTypeTargetGroupConfiguration" xml:space="preserve">
+  <Id>8012587c-fd31-43db-beb9-013b6e2ff89b</Id>
+  <DisplayName>All Orchestrator REST Web Services</DisplayName>
+  <CreatedTime>2016-08-20T12:25:02.4608111Z</CreatedTime>
+  <ModifiedTime>2016-08-20T12:25:02.4608111Z</ModifiedTime>
+  <Enabled>true</Enabled>
+  <TargetType>Tidal.Automation.WebService.Common.WebTargetConfiguration, Tidal.Automation.WebService.Common</TargetType>
+  <TargetTypeExtensionId>80fadda1-75c7-4fad-a61a-0675c9b8fca4</TargetTypeExtensionId>
+  <TargetCriteria>
+    <ConditionDefinition xsi:type="VariableConditionDefinition">
+      <Id>65742622-11f4-40f7-b11e-3d93a6a32685</Id>
+      <Expression xsi:type="SubstitutableString">
+        <HardcodedValue>REST</HardcodedValue>
+      </Expression>
+      <Comparison>Equals</Comparison>
+      <VariableReference xsi:type="PropertyReference">
+        <DisplayPath>Orchestrator Web Serivce.Web Service.Type</DisplayPath>
+        <LinkChain>
+          <Link xsi:type="ObjectReferenceLink">
+            <ObjectLink>
+              <Id>c80a1379-2ade-42a9-95c0-c916206c7fdf</Id>
+              <ObjectType>PropertyExtension</ObjectType>
+            </ObjectLink>
+          </Link>
+        </LinkChain>
+        <ObjectType>Target</ObjectType>
+      </VariableReference>
+    </ConditionDefinition>
+  </TargetCriteria>
+</TargetGroupConfiguration>

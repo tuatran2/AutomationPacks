@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<TargetConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="WebTargetConfiguration" xml:space="preserve">
+  <Id>708ff459-2398-4901-8f17-b25d0ebf3975</Id>
+  <DisplayName>Non-secure Orchestrator REST Web Serivce</DisplayName>
+  <CreatedTime>2016-08-20T12:25:02.3308124Z</CreatedTime>
+  <ModifiedTime>2016-08-20T12:25:02.3308124Z</ModifiedTime>
+  <Owner xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-1708537768-1303643608-725345543-577145</SecurityIdentifier>
+  </Owner>
+  <DefaultRuntimeUserId>5c9a2c31-3e37-44b4-b1a8-09452db6369a</DefaultRuntimeUserId>
+  <TypeExtensionId>80fadda1-75c7-4fad-a61a-0675c9b8fca4</TypeExtensionId>
+  <BaseURL>http://localhost:61527/api/v1/</BaseURL>
+  <IgnoreCertificateErrors>false</IgnoreCertificateErrors>
+  <ProxyAuthentication>None</ProxyAuthentication>
+  <ProxySpecifiedCredentialId>00000000-0000-0000-0000-000000000000</ProxySpecifiedCredentialId>
+</TargetConfiguration>

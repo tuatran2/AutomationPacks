@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PropertyExtensionValueConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>a480be14-df69-49c1-b75e-046cdc4a78e4</Id>
+  <CreatedTime>2016-08-20T12:25:02.4008117Z</CreatedTime>
+  <ModifiedTime>2016-08-20T12:25:02.4008117Z</ModifiedTime>
+  <PropertyExtensionId>c80a1379-2ade-42a9-95c0-c916206c7fdf</PropertyExtensionId>
+  <ObjectId>708ff459-2398-4901-8f17-b25d0ebf3975</ObjectId>
+  <string>REST</string>
+</PropertyExtensionValueConfiguration>

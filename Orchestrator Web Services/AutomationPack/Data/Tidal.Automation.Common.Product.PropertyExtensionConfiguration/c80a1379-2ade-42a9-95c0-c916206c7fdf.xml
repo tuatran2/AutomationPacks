@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<PropertyExtensionConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="StringPropertyExtensionConfiguration" xml:space="preserve">
+  <Id>c80a1379-2ade-42a9-95c0-c916206c7fdf</Id>
+  <DisplayName>Type</DisplayName>
+  <Description>SOAP or REST</Description>
+  <CreatedTime>2016-08-20T12:25:02.270813Z</CreatedTime>
+  <ModifiedTime>2016-08-20T12:25:02.270813Z</ModifiedTime>
+  <string />
+  <ValidTargetTypeNames>
+    <TypeReference>Tidal.Automation.Common.Product.TargetConfiguration, Tidal.Automation.Common.Product</TypeReference>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>80fadda1-75c7-4fad-a61a-0675c9b8fca4</guid>
+  </ValidTargetTypeExtensionIds>
+  <GroupNames>
+    <string>Web Service</string>
+  </GroupNames>
+  <NorthboundName>Type</NorthboundName>
+  <Multiline>false</Multiline>
+</PropertyExtensionConfiguration>
